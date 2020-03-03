@@ -53,6 +53,10 @@
         "README.md",
         "LICENSE.md"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EkoLabs/sonorous.git"
+    },
     "author": {
         "name": "Eko labs",
         "url": "https://developer.eko.com",
