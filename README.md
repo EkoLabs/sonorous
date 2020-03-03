@@ -1,5 +1,5 @@
 # Sonorous
-Sonorous is built for the modern browser, enabling easy audio integration into web apps and games. As an abstraction over the [WebAudio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), Sonorous offers fine-grained control for those who need it, while handling any cross-browser issues for you. See [here](https://caniuse.com/#search=webaudio) for supported browsers.
+Sonorous is built for the modern browser, enabling easy audio integration into web apps and games. As an abstraction over the [WebAudio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), Sonorous offers fine-grained control for those who need it, while handling any cross-browser issues for you.
 
 # Table of Contents
 * [Getting Started](#getting-started)
@@ -11,6 +11,7 @@ Sonorous is built for the modern browser, enabling easy audio integration into w
 * [Examples](#examples)
 * [Developing Locally](#developing-locally)
 * [Contributing](#contributing)
+* [Supported Browsers](#supported-browsers)
 
 # Getting Started
 ## Installing Sonorous
@@ -66,7 +67,7 @@ creates a Sonor object and returns it, if successful.
 
 | Param           | Type           | Description  |
 | :-------------: |:--------------:| :------------|
-| src | `string`, `string[]`, [`object`](#sonor-source-object), `object[]`  | The media this sound is associated with. If you pass in an array of various formats, it will take the first one that works with the current browser. If your source url does not have an extension, you can specify that manually using the [object](#sonor-source-object) defined below. |
+| src | `string`, `string[]`, [`SonorSrc`](#sonor-source-object), `SonorSrc[]`  | The media this sound is associated with. If you pass in an array of various formats, it will take the first one that works with the current browser. If your source url does not have an extension, you can specify that manually using the [object](#sonor-source-object) defined below. |
 | options | `object` | Optional configuration object. See options below. |
 
 
@@ -83,13 +84,11 @@ creates a Sonor object and returns it, if successful.
 | poolSize | `number` | `1` | The total number of audio segments available to play. Increasing this number allows you to start concurrently playing the same sound multiple times, before the initial playthrough has finished.|
 | optimizeFor | `string` | `'time'` | Can either be `'time'` or `'memory'`. This determines if the decoded buffer will be cached or not. By default, it will be. If memory is a concern, then set this to 'memory' and expect a small delay while we decode the buffer before playback can begin. |
 
-##### Sonor Source Object
-```
-{
-    url: `string`,
-    format: `string`
-}
-```
+##### SonorSrc Object
+| Property | Type | Description |
+| :------: | :--: | :---------: |
+| url | `string` | The source url for the audio, without an extension. |
+| format | `string` | The manually specified format for this audio source. |
 
 **Example:**
 ```
@@ -98,6 +97,13 @@ let mySonor = Sonorous.addSonor('./test_audio/test_sound_1.mp3', {
     preload: false,
     volume: 0.5,
     poolSize: 3 });
+
+let testSoundSonor = Sonorous.addSonor(
+    {
+        url: './test_audio/test_sound_2',
+        format: 'mp3'
+    }, 
+    { id: 'test_sound_2'});
 ```
 
 #### removeSonor(id)
@@ -325,3 +331,6 @@ We actively welcome pull requests and proposed changes to the code base. Please 
 2. Comment your code extensively, and update the README when expected.
 3. Add unit tests where applicable.
 4. All existing testing suites must pass and no linter errors should occur.
+
+# Supported Browsers
+Sonorous is supported wherever WebAudio is. Click [here](https://caniuse.com/#search=webaudio) for a full list.
