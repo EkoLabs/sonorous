@@ -67,7 +67,7 @@ creates a Sonor object and returns it, if successful.
 
 | Param           | Type           | Description  |
 | :-------------: |:--------------:| :------------|
-| src | `string`, `string[]`, [`SonorSrc`](#sonor-source-object), `SonorSrc[]`  | The media this sound is associated with. If you pass in an array of various formats, it will take the first one that works with the current browser. If your source url does not have an extension, you can specify that manually using the [object](#sonor-source-object) defined below. |
+| src | `string`, `string[]`, [`SonorSrc`](#sonorsrc-object), `SonorSrc[]`  | The media this sound is associated with. If you pass in an array of various formats, it will take the first one that works with the current browser. If your source url does not have an extension, you can specify that manually using the [SonorSrc object](#sonorsrc-object) defined below. |
 | options | `object` | Optional configuration object. See options below. |
 
 
