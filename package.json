@@ -1,5 +1,5 @@
 {
-    "name": "sonorous",
+    "name": "@ekolabs/sonorous",
     "version": "1.0.0",
     "description": "Abstraction over WebAudio APIs for modern browsers",
     "main": "dist/Sonorous.min.js",
