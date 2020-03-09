@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sonorous Boombox Demo</title>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+</head>
+<body>
+    <div id="main">
+        <div class="boombox-body">
+            <input type="range" id="volume" min="0" max="1" value="1" step="0.01"/>
+            <label for="volume">Volume</label>
+            <button role="switch" id="power">Turn Off</button>
+        </div>
+        <div class="tape">
+            <button id="play">Play</button>
+        </div>
+    </div>
+  <script src="../../dist/Sonorous.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
