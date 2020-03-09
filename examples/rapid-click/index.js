@@ -1,6 +1,6 @@
 let clickSonor;
 if (window.Sonorous) {
-    clickSonor = window.Sonorous.addSonor('./assets/audio/test_sound_1.mp3', {
+    clickSonor = window.Sonorous.addSonor('./assets/audio/chime_sound_effect.mp3', {
         id: 'click_sound',
         poolSize: 10
     });
