@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+**Please fill out this report when filing a bug. Without this report, there may be delays in addressing your bug.**
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
