@@ -1,7 +1,7 @@
 {
     "name": "@ekolabs/sonorous",
     "version": "1.0.0",
-    "description": "Abstraction over WebAudio APIs for modern browsers",
+    "description": "As an abstraction over the WebAudio APIs, this audio library enables easy audio integration into web apps and games.",
     "main": "dist/Sonorous.min.js",
     "license": "Apache-2.0",
     "keywords":[
@@ -50,6 +50,7 @@
     },
     "files": [
         "src/",
+        "package.json",
         "README.md",
         "LICENSE.md"
     ],

@@ -78,7 +78,7 @@ creates a Sonor object and returns it, if successful.
 | id | `string` | randomly generated | A unique ID. One will be created for this object if you do not pass one in. |
 | preload | `boolean` | `true` | Will attempt to load url automatically if true. If false, the calling code must call `load()` explicitly. |
 | volume | `number` | `1.0` | The initial volume of the sound. |
-| looping | `boolean` | `false` |  Determine if the audio should loop forever. |
+| loop | `boolean` | `false` |  Determine if the audio should loop forever. |
 | autoplay | `boolean` | `false` | Determine if the audio should play immediately on load. |
 | muted | `boolean` | `false` | Mute once loaded. |
 | poolSize | `number` | `1` | The total number of audio segments available to play. Increasing this number allows you to start concurrently playing the same sound multiple times, before the initial playthrough has finished.|

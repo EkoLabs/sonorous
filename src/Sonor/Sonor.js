@@ -35,7 +35,7 @@ class Sonor {
      * @param {string} [options.id] - Optional. A unique ID will be created for this object if you do not pass one in.
      * @param {boolean} [options.preload = True] - Optional. Defaults to true and will automatically attempt to load the sound src URL. If false, then it's up to the calling code to load the sound.
      * @param {Number} [options.volume = 1.0] - Optional. Defaults to 1.0 and will set the initial volume of the sound.
-     * @param {boolean} [options.looping = False] - Optional. Defaults to false and will determine if the audio should loop forever or not.
+     * @param {boolean} [options.loop = False] - Optional. Defaults to false and will determine if the audio should loop forever or not.
      * @param {boolean} [options.autoplay = False] - Optional. Defaults to false. Will determine if the audio should try to play as soon as its loaded.
      * @param {boolean} [options.muted = False] - Optional. Defaults to false. Will determine if the audio should be muted on load or not.
      * @param {Sprite} [options.sprite] - Optional. Not implemented yet. This is an object that should define sections of audio that will play at different times.
