@@ -49,7 +49,7 @@ Sonorous is a singleton, and will manage all the Sonor objects.
 #### sonors : `Sonor[]` (read only)
 Array of all the Sonor objects added to this manager.
 
-#### ctx : `AudioContext` (read only)
+#### ctx : [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext) (read only)
 Returns the current audio context used by Sonorous.
 
 #### masterVolume : `number`
