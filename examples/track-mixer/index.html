@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sonorous Track Mixer Demo</title>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+</head>
+<body>
+    <div id="main">
+        <div class="track-mixer-container">
+            <div class="master-controls">
+                <label for="master-volume">Master Volume</label>
+                <input type="range" id="master-volume" min="0" max="1" value="1" step="0.01"/>
+                <button id="mute-btn">Mute All</button>
+                <button id="play-btn">Play</button>
+                <button id="stop-btn">Stop</button>
+            </div>
+            <div class="track" id="track-0">
+                <p>String beat</p>
+                <label for="track-0-volume">Volume</label>
+                <input type="range" id="track-0-volume" min="0" max="1" value="1" step="0.01"/>
+                <label for="track-0-playbackrate">Playback Rate</label>
+                <input type="range" id="track-0-playbackrate" min="0" max="4" value="1" step="0.01" />
+                <button id="track-0-loop">Loop</button>
+                <button id="track-0-mute">Mute</button>
+                <button id="track-0-fadeIn">Fade In</button>
+                <button id="track-0-fadeOut">Fade Out</button>
+            </div>
+            <div class="track" id="track-1">
+                <p>Electric beat</p>
+                <label for="track-1-volume">Volume</label>
+                <input type="range" id="track-1-volume" min="0" max="1" value="1" step="0.01"/>
+                <label for="track-1-playbackrate">Playback Rate</label>
+                <input type="range" id="track-1-playbackrate" min="0" max="4" value="1" step="0.01" />
+                <button id="track-1-loop">Loop</button>
+                <button id="track-1-mute">Mute</button>
+                <button id="track-1-fadeIn">Fade In</button>
+                <button id="track-1-fadeOut">Fade Out</button>
+            </div>
+            <div class="track" id="track-2">
+                <p>Drum beat</p>
+                <label for="track-2-volume">Volume</label>
+                <input type="range" id="track-2-volume" min="0" max="1" value="1" step="0.01"/>
+                <label for="track-2-playbackrate">Playback Rate</label>
+                <input type="range" id="track-2-playbackrate" min="0" max="4" value="1" step="0.01" />
+                <button id="track-2-loop">Loop</button>
+                <button id="track-2-mute">Mute</button>
+                <button id="track-2-fadeIn">Fade In</button>
+                <button id="track-2-fadeOut">Fade Out</button>
+            </div>
+        </div>
+        
+    </div>
+  <script src="../../dist/Sonorous.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

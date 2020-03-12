@@ -247,6 +247,7 @@ class Sonorous {
 
     exportPublicAPI() {
         this.exports = {
+            isSupported: this.isSupported.bind(this),
             reload: this.reload.bind(this),
             unload: this.unload.bind(this),
             addSonor: this.addSonor.bind(this),

@@ -1,4 +1,4 @@
-if (window.Sonorous) {
+if (window.Sonorous && window.Sonorous.isSupported()) {
     const sonor = window.Sonorous.addSonor('./assets/audio/sound1.mp3');
     const playButton = document.getElementById('play');
     playButton.addEventListener('click', () => {
