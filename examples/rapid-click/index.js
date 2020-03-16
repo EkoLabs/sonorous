@@ -19,14 +19,19 @@ function generateClickableDiv() {
     newDiv.style.background = `rgb(${Math.random() * 255.0}, ${Math.random() * 255.0}, ${Math.random() * 255.0})`; // eslint-disable-line
     newDiv.className = 'clickable';
     document.getElementById('main').appendChild(newDiv);
-    newDiv.addEventListener('click', function() {
+    let clickListener = function() {
         if (clickSonor) {
             clickSonor.play();
         }
         newDiv.className += ' ripple rippleEffect';
-    });
+    };
+
+    newDiv.addEventListener('click', clickListener);
+
     setTimeout(function() {
+        newDiv.removeEventListener('click', clickListener);
         newDiv.remove();
+        newDiv = null;
     }, 1500); // eslint-disable-line
 }
 

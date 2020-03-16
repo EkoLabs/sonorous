@@ -1,5 +1,5 @@
 const LIBRARY_NAME = 'Sonorous';
-const path = require('upath');
+const path = require('path');
 const express = require('express');
 
 module.exports = () => {

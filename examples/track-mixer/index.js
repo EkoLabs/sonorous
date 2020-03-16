@@ -1,49 +1,3 @@
-function createVolumeListener(id) {
-    let element = document.getElementById(`${id}-volume`);
-    element.addEventListener('input', () => {
-        window.Sonorous.get(id).volume = parseFloat(element.value);
-    });
-}
-
-function createPlaybackListener(id) {
-    let element = document.getElementById(`${id}-playbackrate`);
-    element.addEventListener('input', () => {
-        window.Sonorous.get(id).playbackRate = parseFloat(element.value);
-    });
-}
-
-function createLoopListener(id) {
-    let element = document.getElementById(`${id}-loop`);
-    element.addEventListener('click', () => {
-        let sonor = window.Sonorous.get(id);
-        sonor.loop = !sonor.loop;
-    });
-}
-
-function createMuteListener(id) {
-    let element = document.getElementById(`${id}-mute`);
-    element.addEventListener('click', () => {
-        let sonor = window.Sonorous.get(id);
-        sonor.muted = !sonor.muted;
-    });
-}
-
-function createFadeInListener(id) {
-    let element = document.getElementById(`${id}-fadeIn`);
-    element.addEventListener('click', () => {
-        let sonor = window.Sonorous.get(id);
-        sonor.fade(1, 1);
-    });
-}
-
-function createFadeOutListener(id) {
-    let element = document.getElementById(`${id}-fadeOut`);
-    element.addEventListener('click', () => {
-        let sonor = window.Sonorous.get(id);
-        sonor.fade(0, 1);
-    });
-}
-
 function addMasterControls() {
     document.getElementById('play-btn').addEventListener('click', () => {
         window.Sonorous.sonors.forEach((sonor) => {
@@ -67,13 +21,36 @@ function addMasterControls() {
     });
 }
 
-function buildTrackControls(trackId) {
-    createVolumeListener(trackId);
-    createPlaybackListener(trackId);
-    createLoopListener(trackId);
-    createMuteListener(trackId);
-    createFadeInListener(trackId);
-    createFadeOutListener(trackId);
+function buildTrackControls(sonor, trackId) {
+    // Create volume listener
+    document.getElementById(`${trackId}-volume`).addEventListener('input', (e) => {
+        sonor.volume = parseFloat(e.target.value);
+    });
+
+    // Create playback listener
+    document.getElementById(`${trackId}-playbackrate`).addEventListener('input', (e) => {
+        sonor.playbackRate = parseFloat(e.target.value);
+    });
+
+    // Create loop listener
+    document.getElementById(`${trackId}-loop`).addEventListener('click', () => {
+        sonor.loop = !sonor.loop;
+    });
+
+    // Create mute listener
+    document.getElementById(`${trackId}-mute`).addEventListener('click', () => {
+        sonor.muted = !sonor.muted;
+    });
+
+    // Create fadeIn listener
+    document.getElementById(`${trackId}-fadeIn`).addEventListener('click', () => {
+        sonor.fade(1, 1);
+    });
+
+    // Create fadeOut listener
+    document.getElementById(`${trackId}-fadeOut`).addEventListener('click', () => {
+        sonor.fade(0, 1);
+    });
 }
 
 if (window.Sonorous && window.Sonorous.isSupported()) {
@@ -84,8 +61,8 @@ if (window.Sonorous && window.Sonorous.isSupported()) {
     };
 
     Object.keys(trackMap).forEach((trackId) => {
-        window.Sonorous.addSonor(trackMap[trackId], { id: trackId, loop: true });
-        buildTrackControls(trackId);
+        let sonor = window.Sonorous.addSonor(trackMap[trackId], { id: trackId, loop: true });
+        buildTrackControls(sonor, trackId);
     });
 
     addMasterControls();
