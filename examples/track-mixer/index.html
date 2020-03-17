@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Sonorous Track Mixer Demo</title>
-  <!-- <link rel="stylesheet" href="./index.css"> -->
+  <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <div id="main">
@@ -25,6 +25,12 @@
                 <button id="track-0-mute">Mute</button>
                 <button id="track-0-fadeIn">Fade In</button>
                 <button id="track-0-fadeOut">Fade Out</button>
+                <div class="time-scrubber-component">
+                    <div class= "time-scrubber" id="track-0-time-scrubber">
+                        <div class="time-handle" id="track-0-time-handle"></div>
+                    </div>
+                    <p id="track-0-timecode"></p>
+                </div>
             </div>
             <div class="track" id="track-1">
                 <p>Electric beat</p>
@@ -36,6 +42,12 @@
                 <button id="track-1-mute">Mute</button>
                 <button id="track-1-fadeIn">Fade In</button>
                 <button id="track-1-fadeOut">Fade Out</button>
+                <div class="time-scrubber-component">
+                    <div class= "time-scrubber" id="track-1-time-scrubber">
+                        <div class="time-handle" id="track-1-time-handle"></div>
+                    </div>
+                    <p id="track-1-timecode"></p>
+                </div>
             </div>
             <div class="track" id="track-2">
                 <p>Drum beat</p>
@@ -47,11 +59,17 @@
                 <button id="track-2-mute">Mute</button>
                 <button id="track-2-fadeIn">Fade In</button>
                 <button id="track-2-fadeOut">Fade Out</button>
+                <div class="time-scrubber-component">
+                    <div class= "time-scrubber" id="track-2-time-scrubber">
+                        <div class="time-handle" id="track-2-time-handle"></div>
+                    </div>
+                    <p id="track-2-timecode"></p>
+                </div>
             </div>
         </div>
         
     </div>
-  <script src="../../dist/Sonorous.min.js"></script>
+  <script src="../../dist/Sonorous.js"></script>
   <script src="./index.js"></script>
 </body>
 </html>

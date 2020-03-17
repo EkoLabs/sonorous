@@ -246,7 +246,7 @@ class Sonor {
 
     get playbackPosition() {
         if (this._activeSegments.length > 0) {
-            this._activeSegments[0].getPlayheadPosition();
+            return this._activeSegments[0].getPlayheadPosition();
         }
         console.warn('No active segments currently'); // eslint-disable-line no-console
         return 0;

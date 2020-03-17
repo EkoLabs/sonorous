@@ -51,6 +51,18 @@ function buildTrackControls(sonor, trackId) {
     document.getElementById(`${trackId}-fadeOut`).addEventListener('click', () => {
         sonor.fade(0, 1);
     });
+    setInterval(() => {
+        if (sonor.isPlaying) {
+            let currentTime = sonor.playbackPosition;
+            if (sonor.duration !== 0) {
+                let percentComplete = currentTime / sonor.duration;
+                let totalWidth = document.getElementById(`${trackId}-time-scrubber`).offsetWidth;
+                let width = totalWidth * percentComplete;
+                document.getElementById(`${trackId}-time-handle`).style.width = `${width}px`;
+                document.getElementById(`${trackId}-timecode`).innerHTML = currentTime.toFixed(2);
+            }
+        }
+    }, 100);
 }
 
 if (window.Sonorous && window.Sonorous.isSupported()) {
