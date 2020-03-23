@@ -19,17 +19,20 @@ function addMasterControls() {
     masterVolControl.addEventListener('input', () => {
         window.Sonorous.masterVolume = parseFloat(masterVolControl.value);
     });
+
+    // Create playback listener
+    let masterPlaybackRate = document.getElementById(`global-playbackrate`);
+    masterPlaybackRate.addEventListener('input', () => {
+        window.Sonorous.sonors.forEach((sonor) => {
+            sonor.playbackRate = parseFloat(masterPlaybackRate.value);
+        });
+    });
 }
 
 function buildTrackControls(sonor, trackId) {
     // Create volume listener
     document.getElementById(`${trackId}-volume`).addEventListener('input', (e) => {
         sonor.volume = parseFloat(e.target.value);
-    });
-
-    // Create playback listener
-    document.getElementById(`${trackId}-playbackrate`).addEventListener('input', (e) => {
-        sonor.playbackRate = parseFloat(e.target.value);
     });
 
     // Create loop listener
