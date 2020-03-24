@@ -17,49 +17,79 @@
                 <label for="global-playbackrate">Playback Rate</label>
                 <input type="range" id="global-playbackrate" min="0" max="4" value="1" step="0.01" />
             </div>
-            <div class="track" id="track-0">
-                <p>String beat</p>
-                <label for="track-0-volume">Volume</label>
-                <input type="range" id="track-0-volume" min="0" max="1" value="1" step="0.01"/>
-                <button id="track-0-loop">Loop</button>
-                <button id="track-0-mute">Mute</button>
-                <button id="track-0-fadeIn">Fade In</button>
-                <button id="track-0-fadeOut">Fade Out</button>
+            <div class="track" id="track-vocals">
+                <p>Vocals</p>
+                <label for="track-vocals-volume">Volume</label>
+                <input type="range" id="track-vocals-volume" min="0" max="1" value="1" step="0.01"/>
+                <button id="track-vocals-loop">Loop</button>
+                <button id="track-vocals-mute">Mute</button>
+                <button id="track-vocals-fadeIn">Fade In</button>
+                <button id="track-vocals-fadeOut">Fade Out</button>
                 <div class="time-scrubber-component">
-                    <div class= "time-scrubber" id="track-0-time-scrubber">
-                        <div class="time-handle" id="track-0-time-handle"></div>
+                    <div class= "time-scrubber" id="track-vocals-time-scrubber">
+                        <div class="time-handle" id="track-vocals-time-handle"></div>
                     </div>
-                    <p id="track-0-timecode"></p>
+                    <p id="track-vocals-timecode"></p>
                 </div>
             </div>
-            <div class="track" id="track-1">
-                <p>Electric beat</p>
-                <label for="track-1-volume">Volume</label>
-                <input type="range" id="track-1-volume" min="0" max="1" value="1" step="0.01"/>
-                <button id="track-1-loop">Loop</button>
-                <button id="track-1-mute">Mute</button>
-                <button id="track-1-fadeIn">Fade In</button>
-                <button id="track-1-fadeOut">Fade Out</button>
+            <div class="track" id="track-guitars">
+                <p>Guitars</p>
+                <label for="track-guitars-volume">Volume</label>
+                <input type="range" id="track-guitars-volume" min="0" max="1" value="1" step="0.01"/>
+                <button id="track-guitars-loop">Loop</button>
+                <button id="track-guitars-mute">Mute</button>
+                <button id="track-guitars-fadeIn">Fade In</button>
+                <button id="track-guitars-fadeOut">Fade Out</button>
                 <div class="time-scrubber-component">
-                    <div class= "time-scrubber" id="track-1-time-scrubber">
-                        <div class="time-handle" id="track-1-time-handle"></div>
+                    <div class= "time-scrubber" id="track-guitars-time-scrubber">
+                        <div class="time-handle" id="track-guitars-time-handle"></div>
                     </div>
-                    <p id="track-1-timecode"></p>
+                    <p id="track-guitars-timecode"></p>
                 </div>
             </div>
-            <div class="track" id="track-2">
-                <p>Drum beat</p>
-                <label for="track-2-volume">Volume</label>
-                <input type="range" id="track-2-volume" min="0" max="1" value="1" step="0.01"/>
-                <button id="track-2-loop">Loop</button>
-                <button id="track-2-mute">Mute</button>
-                <button id="track-2-fadeIn">Fade In</button>
-                <button id="track-2-fadeOut">Fade Out</button>
+            <div class="track" id="track-keys">
+                <p>Keys</p>
+                <label for="track-keys-volume">Volume</label>
+                <input type="range" id="track-keys-volume" min="0" max="1" value="1" step="0.01"/>
+                <button id="track-keys-loop">Loop</button>
+                <button id="track-keys-mute">Mute</button>
+                <button id="track-keys-fadeIn">Fade In</button>
+                <button id="track-keys-fadeOut">Fade Out</button>
                 <div class="time-scrubber-component">
-                    <div class= "time-scrubber" id="track-2-time-scrubber">
-                        <div class="time-handle" id="track-2-time-handle"></div>
+                    <div class= "time-scrubber" id="track-keys-time-scrubber">
+                        <div class="time-handle" id="track-keys-time-handle"></div>
                     </div>
-                    <p id="track-2-timecode"></p>
+                    <p id="track-keys-timecode"></p>
+                </div>
+            </div>
+            <div class="track" id="track-cello">
+                <p>Cello</p>
+                <label for="track-cello-volume">Volume</label>
+                <input type="range" id="track-cello-volume" min="0" max="1" value="1" step="0.01"/>
+                <button id="track-cello-loop">Loop</button>
+                <button id="track-cello-mute">Mute</button>
+                <button id="track-cello-fadeIn">Fade In</button>
+                <button id="track-cello-fadeOut">Fade Out</button>
+                <div class="time-scrubber-component">
+                    <div class= "time-scrubber" id="track-cello-time-scrubber">
+                        <div class="time-handle" id="track-cello-time-handle"></div>
+                    </div>
+                    <p id="track-cello-timecode"></p>
+                </div>
+            </div>
+            <div class="track" id="track-drums">
+                <p>Drums</p>
+                <label for="track-drums-volume">Volume</label>
+                <input type="range" id="track-drums-volume" min="0" max="1" value="1" step="0.01"/>
+                <button id="track-drums-loop">Loop</button>
+                <button id="track-drums-mute">Mute</button>
+                <button id="track-drums-fadeIn">Fade In</button>
+                <button id="track-drums-fadeOut">Fade Out</button>
+                <div class="time-scrubber-component">
+                    <div class= "time-scrubber" id="track-drums-time-scrubber">
+                        <div class="time-handle" id="track-drums-time-handle"></div>
+                    </div>
+                    <p id="track-drums-timecode"></p>
                 </div>
             </div>
         </div>

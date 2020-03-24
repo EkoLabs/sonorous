@@ -70,9 +70,11 @@ function buildTrackControls(sonor, trackId) {
 
 if (window.Sonorous && window.Sonorous.isSupported()) {
     let trackMap = {
-        'track-0': './assets/audio/string_beat.wav',
-        'track-1': './assets/audio/electric_beat.wav',
-        'track-2': './assets/audio/drum_beat.wav'
+        'track-vocals': './assets/audio/Tillian_Reborn_Vocals.mp3',
+        'track-guitars': './assets/audio/Tillian_Reborn_Guitars.mp3',
+        'track-keys': './assets/audio/Tillian_Reborn_Keys.mp3',
+        'track-cello': './assets/audio/Tillian_Reborn_Cello.mp3',
+        'track-drums': './assets/audio/Tillian_Reborn_Drums.mp3',
     };
 
     Object.keys(trackMap).forEach((trackId) => {
