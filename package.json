@@ -1,6 +1,6 @@
 {
     "name": "@ekolabs/sonorous",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "As an abstraction over the WebAudio APIs, Sonorous is an audio library that enables easy audio integration into web apps and games.",
     "main": "dist/Sonorous.min.js",
     "license": "Apache-2.0",
