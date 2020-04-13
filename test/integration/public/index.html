@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page with Sonorous.js Loaded</title>
+</head>
+
+<body>
+    <div>
+        <p>Master Volume</p>
+        <input type="range" min="0" max="100" value="100" class="slider" oninput="setMasterVolumeValue(this.value)">
+        <label id="master-volume-value">1.0</label>
+    </div>
+    <div>
+        <p>Sound 1</p>
+        <button onclick = "playAudio(0)" id="play-btn-0"> Play </button>
+        <button onclick = "pauseAudio(0)" id="pause-btn-0"> Pause </button>
+        <button onclick = "stopAudio(0)" id="stop-btn-0"> Stop </button>
+        <button onclick = "seekToMiddle(0)" id="seek-btn-0"> Seek </button>
+        <button onclick= "fadeToZero(0)" id="fade-btn-0">Fade Out</button>
+        <button onclick= "fadeToOne(0)" id="fade-btn-0">Fade In</button>
+        <button onclick= "scheduleFadeInMiddle(0)" id="fade-btn-0">Schedule Fade</button>
+        <div>
+                <p>Volume</p>
+                <input type="range" min="0" max="100" value="100" class="slider" oninput="setVolumeValue(0, this.value)">
+                <label id="volume-value-0">1.0</label>
+            </div>
+            <div>
+                <p>Mute</p>
+                <button type="radio" onclick= "toggleMuted(0)">Mute</button>
+                <label id="muted-label-0">Unmuted</label>
+            </div>
+            <div>
+                <p>Playback Rate</p>
+                <input type="range" min="0" max="400" value="100" class="slider" oninput="setPlaybackRate(0, this.value)">
+                <label id="playbackrate-label-0">1.0</label>
+            </div>
+            <div>
+                <p>Loop</p>
+                <button type="radio" onclick= "toggleLoop(0)">Loop</button>
+                <label id="looping-label-0">Not Looping</label>
+            </div>
+    </div>
+    <div>
+            <p>Sound 2</p>
+            <button onclick = "playAudio(1)" id="play-btn-1"> Play </button>
+            <button onclick = "pauseAudio(1)" id="pause-btn-1"> Pause </button>
+            <button onclick = "stopAudio(1)" id="stop-btn-1"> Stop </button>
+            <button onclick = "seekToMiddle(1)" id="seek-btn-1"> Seek </button>
+            <button onclick= "fadeToZero(1)" id="fade-btn-1">Fade Out</button>
+            <button onclick= "fadeToOne(1)" id="fade-btn-1">Fade In</button>
+            <button onclick= "scheduleFadeInMiddle(1)" id="fade-btn-1">Schedule Fade</button>
+            <div>
+                    <p>Volume</p>
+                    <input type="range" min="0" max="100" value="100" class="slider" oninput="setVolumeValue(1, this.value)">
+                    <label id="volume-value-1">1.0</label>
+                </div>
+                <div>
+                    <p>Mute</p>
+                    <button type="radio" onclick= "toggleMuted(1)">Mute</button>
+                    <label id="muted-label-1">Unmuted</label>
+                </div>
+                <div>
+                    <p>Playback Rate</p>
+                    <input type="range" min="0" max="400" value="100" class="slider" oninput="setPlaybackRate(1, this.value)">
+                    <label id="playbackrate-label-1">1.0</label>
+                </div>
+                <div>
+                    <p>Loop</p>
+                    <button type="radio" onclick= "toggleLoop(1)">Loop</button>
+                    <label id="looping-label-1">Not Looping</label>
+                </div>
+        </div>
+        <div>
+                <p>Sound 2 (1)</p>
+                <button onclick = "playAudio(2)" id="play-btn-2"> Play </button>
+                <button onclick = "pauseAudio(2)" id="pause-btn-2"> Pause </button>
+                <button onclick = "stopAudio(2)" id="stop-btn-2"> Stop </button>
+                <button onclick = "seekToMiddle(2)" id="seek-btn-2"> Seek </button>
+                <button onclick= "fadeToZero(2)" id="fade-btn-2">Fade Out</button>
+                <button onclick= "fadeToOne(2)" id="fade-btn-2">Fade In</button>
+                <button onclick= "scheduleFadeInMiddle(2)" id="fade-btn-2">Schedule Fade</button>
+                <div>
+                        <p>Volume</p>
+                        <input type="range" min="0" max="100" value="100" class="slider" oninput="setVolumeValue(2, this.value)">
+                        <label id="volume-value-2">1.0</label>
+                    </div>
+                    <div>
+                        <p>Mute</p>
+                        <button type="radio" onclick= "toggleMuted(2)">Mute</button>
+                        <label id="muted-label-2">Unmuted</label>
+                    </div>
+                    <div>
+                        <p>Playback Rate</p>
+                        <input type="range" min="0" max="400" value="100" class="slider" oninput="setPlaybackRate(2, this.value)">
+                        <label id="playbackrate-label-2">1.0</label>
+                    </div>
+                    <div>
+                        <p>Loop</p>
+                        <button type="radio" onclick= "toggleLoop(2)">Loop</button>
+                        <label id="looping-label-2">Not Looping</label>
+                    </div>
+            </div>
+    <!-- `/` is root of dist; we're being served as a static file in /test/integration/public -->
+    <script src="/Sonorous.js" async></script>
+    <script>
+        let sonors = [];
+        let s = null;
+        window.onload = function() {
+            s = Sonorous;
+            s.addSonor('./test_audio/test_sound_1.mp3', {id: '0', preload: true, optimizeFor: 'time', poolSize: 4});
+            s.addSonor('./test_audio/test_sound_2.mp3', {id: '1', preload: false, optimizeFor: 'memory'});
+            s.addSonor('./test_audio/test_sound_2.mp3', {id: '2', preload: false, optimizeFor: 'memory'});
+            for (id in s.sonors) {
+                var element = s.sonors[id];
+                element.on('play', function(snr) {
+                    // console.log('playing audio now');
+                });
+                element.on('stop', function(snr) {    
+                    // console.log(`stopped sonor: ${snr.id}`);
+                });
+                element.on('pause', function(snr) {
+                    // console.log(`paused sonor: ${snr.id}`);
+                });
+                element.on('ended', function(snr) {
+                    // console.log(`ended sonor: ${snr.id}`);
+                });
+                element.on('seeked', function(snr, seekPos) {
+                    // console.log(`seek pos of sonor: ${snr.id} changed to ${seekPos}`);
+                });
+                element.on('volumechanged', function(snr, newVolume) {
+                    // console.log(`volume of sonor: ${snr.id} changed to ${newVolume}`);
+                });
+                element.on('playbackratechanged', function(snr, newPlaybackRate) {
+                    // console.log(`playback rate of sonor: ${snr.id} changed to ${newPlaybackRate}`);
+                });
+                element.on('fadefinished', function(snr) {
+                    // console.log(`fade of sonor: ${snr.id}`);
+                });
+            }
+
+            s.on('audioUnlocked', function() {
+                // console.log('audio has been unlocked');
+            });
+            s.on('masterVolumeChanged', function(vol) {
+                // console.log(`master volume has changed: ${vol}`);
+            });
+        }
+        playAudio = function(id) {
+            // console.log(`playing : ${s.get(id.toString()).id}`);
+            s.get(id.toString()).play();
+            let btn = document.getElementById(`play-btn-${id}`);
+            btn.innerHTML = s.get(id.toString()).isPlaying ? 'Playing' : 'Play';
+        }
+        pauseAudio = function(id) {
+            if (s.get(id.toString()).isPlaying) {
+                s.get(id.toString()).pause();
+            }
+            let btn = document.getElementById(`pause-btn-${id}`);
+            btn.innerHTML = s.get(id.toString()).isPlaying ? 'Paused' : 'Pause';
+        }
+        stopAudio = function(id) {
+            if (s.get(id.toString()).isPlaying) {
+                s.get(id.toString()).stop();
+            }
+            let btn = document.getElementById(`stop-btn-${id}`);
+            // btn.innerHTML = s.get(id.toString()).isPlaying ? 'Stopped' : 'Stop';
+        }
+        fadeToZero = function(id) {
+            s.get(id.toString()).fade(0, 1);
+        }
+        fadeToOne = function(id) {
+            s.get(id.toString()).fade(1, 1);
+        }
+        scheduleFadeInMiddle = function(id) {
+            s.get(id.toString()).fade(0, 1, 10);
+        }
+        seekToMiddle = function(id) {
+            s.get(id.toString()).seek(10.0);
+        }
+        setMasterVolumeValue = function(volValue) {
+            s.masterVolume = parseInt(volValue)/100.0;
+            let label = document.getElementById('master-volume-value');
+            label.innerHTML = s.masterVolume;
+        }
+        setVolumeValue = function(id, volValue) {
+            s.get(id.toString()).volume = parseInt(volValue)/100.0;
+            let label = document.getElementById(`volume-value-${id}`);
+            label.innerHTML = s.get(id.toString()).volume;
+        }
+        toggleMuted = function(id) {
+            s.get(id.toString()).muted = !s.get(id.toString()).muted;
+            let label = document.getElementById(`muted-label-${id}`);
+            label.innerHTML = s.get(id.toString()).muted ? "Muted" : "Unmuted";
+        }
+        setPlaybackRate = function(id, playbackRateVal) {
+            s.get(id.toString()).playbackRate = parseInt(playbackRateVal)/100.0;
+            let label = document.getElementById(`playbackrate-label-${id}`);
+            label.innerHTML = s.get(id.toString()).playbackRate;
+        }
+        toggleLoop = function(id) {
+            s.get(id.toString()).looping = !s.get(id.toString()).looping;
+            let label = document.getElementById(`looping-label-${id}`);
+            label.innerHTML = s.get(id.toString()).looping ? "Looping" : "Not Looping";
+        }
+    </script>
+</body>
+
+</html>

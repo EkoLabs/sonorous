@@ -1,0 +1,24 @@
+{
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-runtime"]
+    }
+  },
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "chrome": "63",
+          "edge": "40",
+          "firefox": "58",
+          "safari": "11",
+          "ios": "10.3.3",
+          "android": "5.0"
+        }
+      }
+    ]
+  ],
+  "plugins": []
+}

@@ -1,0 +1,10 @@
+.time-handle {
+    background-color: blue;
+    width: 0px;
+    height: 3px;
+}
+.time-scrubber {
+    border: 1px solid blue;
+    width: 300px;
+    height: 3px;
+}

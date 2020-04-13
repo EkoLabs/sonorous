@@ -1,0 +1,70 @@
+{
+    "name": "@ekolabs/sonorous",
+    "version": "1.0.0",
+    "description": "As an abstraction over the WebAudio APIs, Sonorous is an audio library that enables easy audio integration into web apps and games.",
+    "main": "dist/Sonorous.min.js",
+    "license": "Apache-2.0",
+    "keywords":[
+        "sonorous",
+        "web audio",
+        "webaudio",
+        "audio",
+        "sound"
+    ],
+    "scripts": {
+        "build": "webpack",
+        "build:production": "webpack --config webpack.prod.js",
+        "prepare": "npm run build:production",
+        "start-dev": "open https://localhost:9090/test/integration/public/index.html && webpack-dev-server --https",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.1.5",
+        "@babel/core": "^7.2.2",
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/preset-env": "^7.2.0",
+        "@babel/register": "^7.0.0",
+        "@babel/runtime": "^7.3.4",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-jest": "^24.3.0",
+        "babel-loader": "^8.0.4",
+        "clean-webpack-plugin": "^1.0.1",
+        "compression-webpack-plugin": "^2.0.0",
+        "eslint": "^5.9.0",
+        "eslint-loader": "^2.1.1",
+        "express": "^4.16.4",
+        "jest": "^24.3.0",
+        "jest-extended": "^0.11.1",
+        "jest-junit": "^6.2.1",
+        "webpack": "^4.26.0",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.14",
+        "uglifyjs-webpack-plugin": "^1.2.7"
+    },
+    "dependencies": {
+        "eventemitter3": "^4.0.0",
+        "axios": "^0.19.0",
+        "axios-retry": "^3.1.2",
+        "ua-parser-js": "^0.7.19"
+    },
+    "files": [
+        "src/",
+        "package.json",
+        "README.md",
+        "LICENSE.md"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EkoLabs/sonorous.git"
+    },
+    "author": {
+        "name": "Eko labs",
+        "url": "https://developer.eko.com",
+        "email": "dev@eko.com"
+    },
+    "contributors": [
+        {
+            "name": "Divya Mahadevan"
+        }
+    ]
+}
