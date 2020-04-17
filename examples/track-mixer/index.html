@@ -4,8 +4,111 @@
   <meta charset="utf-8">
   <title>Sonorous Track Mixer Demo</title>
   <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../Users/opher/Downloads/chesstype-cufonfonts-webfont/style.css">
 </head>
 <body>
+    <div class="mixerContainer">
+        <div id="tempmaster" class="controllerBox">
+            <h3 class="title">Master</h3>
+            <div class="box">
+                <div class="radialSlider">
+                    <label for="tempmaster-volume">Volume</label>
+                    <input type="range" min="1" max="100" step="1" value="80" id="tempmaster-volume">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="83.73px" height="83.82px" viewBox="0 0 83.73 83.82">
+                        <style type="text/css">
+                            .st0 {
+                                fill: url(#jogGradient);
+                            }
+
+                            .st1 {
+                                fill: none;
+                                stroke: #545454;
+                                stroke-width: 1.3855;
+                                stroke-miterlimit: 10;
+                            }
+
+                            .st2 {
+                                fill: none;
+                                stroke: #FFA412;
+                                stroke-width: 1.4431;
+                                stroke-miterlimit: 10;
+                            }
+
+                            .st3 {
+                                fill: none;
+                                stroke: #7A7A7A;
+                                stroke-width: 1.4431;
+                                stroke-miterlimit: 10;
+                            }
+
+                            .st4 {
+                                fill: #FFA412;
+                            }
+
+                        </style>
+                        <linearGradient id="jogGradient" gradientUnits="userSpaceOnUse" x1="22.9189" y1="76.1371" x2="90.5909" y2="76.1371" gradientTransform="matrix(1 -2.775030e-04 2.775030e-04 1 -15.3562 -34.7017)">
+                            <stop offset="0" style="stop-color:#232323" />
+                            <stop offset="0.4624" style="stop-color:#100E0F" />
+                            <stop offset="0.7146" style="stop-color:#121011" />
+                            <stop offset="0.8573" style="stop-color:#1A1919" />
+                            <stop offset="0.9723" style="stop-color:#272627" />
+                            <stop offset="1" style="stop-color:#2B2B2B" />
+                        </linearGradient>
+                        <circle class="st0" cx="41.42" cy="41.42" r="33.84" />
+                        <circle class="st1" cx="41.42" cy="41.42" r="33.84" />
+                        <path class="st2" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                        <path class="st3" d="M3.92,25.6" />
+                        <circle class="st4" cx="57.49" cy="24.06" r="4.29" />
+                    </svg>
+
+                    <div class="dotDisplay">5.40</div>
+                </div>
+                <div class="dotDisplay">Tillian / Reborn &gt;&gt;&gt;</div>
+                <div class="progressSlider">
+                    <span className="timeElapsed">02:07</span>
+                    <input type="range" min="1" max="100" step="1" value="80" id="tempmaster-progress">
+                    <span className="timeLeft">04:15</span>
+                </div>
+                <div class="row">
+                    <div class="buttonContainer">
+                        <button class="stop">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10.69 10.69"  xml:space="preserve">
+                                <path class="st0" d="M8.8,10.34H1.9c-0.85,0-1.55-0.7-1.55-1.55V1.9c0-0.85,0.7-1.55,1.55-1.55h6.9c0.85,0,1.55,0.7,1.55,1.55v6.9C10.34,9.67,9.65,10.34,8.8,10.34z"/>
+                            </svg>
+                        </button>
+                        <button class="play active">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10 10"  xml:space="preserve">
+                                <path class="st0" d="M0,0.81v8.03c0,0.63,0.67,1,1.22,0.7l6.84-4.03c0.52-0.3,0.52-1.07,0-1.39L1.22,0.09C0.67-0.19,0,0.2,0,0.81z"></path>
+                            </svg>
+                        </button>
+                        <button class="repeat">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 17.25 13.54"  xml:space="preserve">
+                                    <g>
+                                        <path d="M10.96,11.08c-0.71,0.39-1.5,0.59-2.3,0.59C5.95,11.69,3.74,9.5,3.73,6.8l0-0.18L5,6.61c0.22,0,0.42-0.11,0.51-0.31
+                                            c0.11-0.18,0.09-0.42-0.02-0.6L3.27,2.28C3.16,2.12,2.97,2.01,2.77,2.01c-0.2,0-0.38,0.11-0.49,0.27l-2.2,3.44
+                                            c-0.11,0.18-0.12,0.4-0.01,0.6c0.11,0.18,0.29,0.31,0.51,0.31l1.27-0.01l0,0.18c0.02,3.74,3.07,6.75,6.81,6.73
+                                            c1.11-0.01,2.21-0.28,3.17-0.82c0.45-0.24,0.63-0.82,0.37-1.27C11.97,11.02,11.41,10.84,10.96,11.08z"/>
+                                        <path d="M17.18,7.21c-0.11-0.18-0.29-0.31-0.51-0.31L15.4,6.91l0-0.18C15.38,2.99,12.33-0.02,8.59,0C7.48,0.01,6.38,0.28,5.42,0.82
+                                            C4.96,1.05,4.79,1.64,5.04,2.09C5.28,2.54,5.86,2.7,6.32,2.46C7,2.08,7.8,1.87,8.6,1.87c2.7-0.01,4.91,2.17,4.93,4.87l0,0.18
+                                            l-1.27,0.01c-0.22,0-0.42,0.11-0.51,0.31c-0.11,0.18-0.09,0.42,0.02,0.6l2.22,3.42c0.11,0.16,0.29,0.27,0.49,0.27
+                                            c0.2,0,0.38-0.11,0.49-0.27l2.2-3.44C17.27,7.63,17.29,7.41,17.18,7.21z"/>
+                                    </g>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="toggleContainer">
+                        <div class="title">Mute all</div>
+                        <input type="checkbox" id="tempmaster-mute" class="toggle">
+                        <label for="tempmaster-mute"></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="main">
         <div class="track-mixer-container">
             <div class="master-controls">
@@ -17,7 +120,7 @@
                 <label for="global-playbackrate">Playback Rate</label>
                 <input type="range" id="global-playbackrate" min="0" max="4" value="1" step="0.01" />
             </div>
-            <div class="track" id="track-vocals">
+            <div class="track" id="track-v ocals">
                 <p>Vocals</p>
                 <label for="track-vocals-volume">Volume</label>
                 <input type="range" id="track-vocals-volume" min="0" max="1" value="1" step="0.01"/>
