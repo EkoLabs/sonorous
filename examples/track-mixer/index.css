@@ -12,24 +12,35 @@ body{
 .controllerBox{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --main-color: #f6b018;
+    display: flex;
+    flex-direction: column;
 }
 
 .controllerBox h3.title {
     box-sizing: border-box;
+    font-size: 18px;
     background: #161616;
     border-radius: 5px 5px 0px 0px;
     color: #8E8E8E;
     margin: 0;
     padding: 10px;
+    padding-bottom: 9px;
     text-transform: uppercase;
+    background-repeat: no-repeat;
+    background-position: right 10px top 10px;
+    background-size: 16px;
 }
 
 .controllerBox .box {
     box-sizing: border-box;
-    padding: 10px;
+    flex-grow: 1;
+    padding: 18px 18px 10px 18px;
     background : linear-gradient(90deg, rgba(43, 43, 43, 1) 0%, rgba(31, 31, 31, 1) 100%);
     border-radius : 0 0 6px 6px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .controllerBox .dotDisplay,
@@ -41,7 +52,7 @@ body{
     border-bottom: 2px solid #3b393a;
     background: #100e0f;
     padding: 6px 10px;
-    margin: 15px;
+    margin: 10px;
     border-radius: 6px;
 }
 
@@ -116,6 +127,56 @@ body{
     visibility: hidden;
 }
 
+/*radial slider*/
+
+
+.radialSlider {
+    position: relative;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.radialSlider input { display: none}
+
+.radialSlider label{
+    display: block;
+    color: #8E8E8E;
+    margin: 0;
+    padding: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.radialSlider svg {
+    margin-top: 8px;
+}
+
+.radialSlider .jog {
+    fill: url(#jogGradient);
+    stroke: #545454;
+    stroke-width: 1.3855;
+    stroke-miterlimit: 10;
+}
+
+.radialSlider .bar {
+    fill: none;
+    stroke: #FFA412;
+    stroke-width: 1.4431;
+    stroke-miterlimit: 10;
+}
+
+.radialSlider .thumb{
+    fill: #FFA412;
+}
+
+.radialSlider .dotDisplay {
+    align-self: center;
+    margin-top: 3px;
+    text-align: center;
+}
+
 /*main button container*/
 
 .controllerBox .buttonContainer {
@@ -136,13 +197,14 @@ body{
     justify-content: center;
     margin-right: 2px;
     cursor: pointer;
+    transition: all 0.2s ease-out;
 }
 
-.buttonContainer button.active{
+.buttonContainer button.active, .buttonContainer button:hover{
     background: var(--main-color);
 }
 
-.buttonContainer button.active path {
+.buttonContainer button.active path, .buttonContainer button:hover path  {
     stroke: none;
     fill: black;
 }
@@ -159,9 +221,14 @@ body{
     stroke-miterlimit:10;
 }
 
-button.repeat svg{
+button.repeat svg {
     width: 100%;
     height: 100%;
+}
+
+button.fadeIn svg, button.fadeOut svg{
+    width: 90%;
+    height: 90%;
 }
 
 
@@ -177,7 +244,7 @@ button.repeat svg{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin: 15px;
+    margin: 15px 0;
 }
 
 .toggleContainer{
@@ -191,7 +258,6 @@ button.repeat svg{
     padding: 0px;
     text-align: center;
     text-transform: uppercase;
-    font-weight: bold;
 }
 
 .controllerBox .toggle + label{
@@ -202,7 +268,7 @@ button.repeat svg{
     border-radius: 50px;
     cursor: pointer;
     margin: 0;
-    margin-top: 3px;
+    margin-top: 8px;
 }
 
 .toggle + label:before{
@@ -222,13 +288,41 @@ button.repeat svg{
     background: var(--main-color);
 }
 
-.radialSlider{
 
+/*layout */
+
+.mixerContainer{
+    display: flex;
+    align-items: stretch;
 }
 
+.track {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
+.track .toggleContainer{
+    margin-top: 20px;
+}
 
-#tempmaster{
+.track .buttonContainer {
+    margin-top: 20px;
+}
+
+#track-vocals > .title{
+    background-image: url(./assets/icons/vocals.svg);
+}
+
+#track-guitars > .title{
+    background-image: url(./assets/icons/guitars.svg);
+}
+
+#master .box{
+    align-items: stretch;
+}
+
+#master{
     width: 300px;
 }
 
