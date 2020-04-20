@@ -12,6 +12,7 @@ body{
 .controllerBox{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --main-color: #f6b018;
+    --secondary-color: #bf8a16;
     display: flex;
     flex-direction: column;
 }
@@ -90,11 +91,15 @@ body{
     -moz-apperance: none;
     border-radius: 6px;
     height: 10px;
+    --progress-percent: 0%;
 
     background-image: linear-gradient(90deg,
-    var(--main-color) 15%,
-    black 15%
+    var(--main-color) var(--progress-percent),
+    black var(--progress-percent)
     );
+
+    transition: all 0.3s linear;
+    cursor: pointer;
 }
 
 .progressSlider input[type="range"]::-moz-range-track {
@@ -137,6 +142,11 @@ body{
     flex-direction: column;
 }
 
+.radialSlider .jogContainer {
+    transform-origin: center;
+    cursor: pointer;
+}
+
 .radialSlider input { display: none}
 
 .radialSlider label{
@@ -160,11 +170,16 @@ body{
     stroke-miterlimit: 10;
 }
 
-.radialSlider .bar {
+.radialSlider .bar,  .radialSlider .barActive{
     fill: none;
     stroke: #FFA412;
     stroke-width: 1.4431;
     stroke-miterlimit: 10;
+    stroke-dasharray: 191;
+}
+
+.radialSlider .bar{
+    stroke: #7A7A7A;
 }
 
 .radialSlider .thumb{
@@ -175,6 +190,7 @@ body{
     align-self: center;
     margin-top: 3px;
     text-align: center;
+    width: 30px;
 }
 
 /*main button container*/
@@ -200,7 +216,11 @@ body{
     transition: all 0.2s ease-out;
 }
 
-.buttonContainer button.active, .buttonContainer button:hover{
+.buttonContainer button:hover{
+    background: var(--secondary-color);
+}
+
+.buttonContainer button.active{
     background: var(--main-color);
 }
 
@@ -208,6 +228,7 @@ body{
     stroke: none;
     fill: black;
 }
+
 
 .buttonContainer button svg{
     width: 60%;
@@ -221,7 +242,7 @@ body{
     stroke-miterlimit:10;
 }
 
-button.repeat svg {
+button.loop svg {
     width: 100%;
     height: 100%;
 }
