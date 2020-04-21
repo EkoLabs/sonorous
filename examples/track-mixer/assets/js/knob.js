@@ -20,8 +20,8 @@ function knob(inputElement, radialElement, options) {
     let startPoint;
     let startDegree;
     let startValue;
+    let degreeDelta;
     let mouseDown;
-    let inElement;
     let previousDegree;
     let revolutions;
 
@@ -63,8 +63,6 @@ function knob(inputElement, radialElement, options) {
     }
 
     window.addEventListener('mousemove', e => {
-        let elX = e.clientX - elementBB.x;
-        let elY = e.clientY - elementBB.y;
         if (mouseDown) {
             let currentDegree = getDegrees(e.clientX, e.clientY);
             if (currentDegree - previousDegree > 300) {
@@ -73,7 +71,7 @@ function knob(inputElement, radialElement, options) {
                 revolutions += 1;
             }
             let wrappedDegree = currentDegree + revolutions * 360;
-            let degreeDelta = wrappedDegree - startDegree;
+            degreeDelta = wrappedDegree - startDegree;
 
             // console.log(degreeDelta);
 
@@ -85,6 +83,18 @@ function knob(inputElement, radialElement, options) {
             e.preventDefault();
         }
     })
+
+    radialElement.addEventListener('click', e => {
+        if (typeof degreeDelta === 'undefined' || degreeDelta === null){
+            let degree = getDegrees(e.clientX, e.clientY);
+            // degree relative to the rangeStartDegree
+            let relativeDegree = norrmalizeDegree(degree + rangeStartDegree);
+            newValue = relativeDegree / rangeInDegrees * (valueRangeEnd - valueRangeStart) + valueRangeStart;
+            updateValue(newValue);
+            update();
+            e.preventDefault();
+        }
+    });
 
     radialElement.addEventListener('mousedown', e => {
         mouseDown = true;
@@ -102,6 +112,10 @@ function knob(inputElement, radialElement, options) {
         startPoint = null;
         startValue = null;
         revolutions = null;
+
+        setTimeout(()=>{
+            degreeDelta = null;
+        }, 200);
     });
 
     radialElement.addEventListener('wheel', e => {
@@ -113,11 +127,19 @@ function knob(inputElement, radialElement, options) {
         e.preventDefault();
     });
 
-
-
     inputElement.addEventListener('change', e =>{
         value = parseFloat(inputElement.value);
         update();
     })
+
+    function norrmalizeDegree(deg){
+        while(deg>360){
+            deg-=360;
+        }
+        while(deg<0){
+            deg+=360;
+        }
+        return deg;
+    }
 
 }

@@ -183,9 +183,14 @@ body > svg{
     flex-direction: column;
 }
 
+.radialSlider svg{
+    pointer-events: none;
+}
+
 .radialSlider .jogContainer {
     transform-origin: center;
     cursor: pointer;
+    pointer-events: all;
 }
 
 .radialSlider input { display: none}
