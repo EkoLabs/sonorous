@@ -11,24 +11,44 @@
         <div id="master" class="controllerBox">
             <h3 class="title">Master</h3>
             <div class="box">
-                <div class="radialSlider volumeContainer">
-                    <input type="range" min="0" max="11" step="0.1" value="10" id="master-volume">
-                    <label for="master-volume">Volume</label>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 83.73 83.82">
-                        <g class="jogContainer">
-                            <circle class="jog" cx="41.42" cy="41.42" r="33.84" />
-                            <circle class="thumb" cx="42" cy="22" r="4.29" />
-                        </g>
-                        <path class="bar" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                <div class="row">
+                    <div class="radialSlider volumeContainer">
+                        <input type="range" min="0" max="11" step="0.1" value="10" id="master-volume">
+                        <label for="master-volume">Volume</label>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 83.73 83.82">
+                            <g class="jogContainer">
+                                <circle class="jog" cx="41.42" cy="41.42" r="33.84" />
+                                <circle class="thumb" cx="42" cy="22" r="4.29" />
+                            </g>
+                            <path class="bar" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
                          s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
                          s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
-                        <path class="barActive" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                            <path class="barActive" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
                          s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
                          s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
-                    </svg>
-                    <div class="dotDisplay">--</div>
+                        </svg>
+                        <div class="dotDisplay">--</div>
+                    </div>
+                    <a href="https://github.com/EkoLabs/sonorous" target="_blank" class="sonorousLink">Sonorous</a>
+                    <div class="radialSlider rateContainer">
+                        <input type="range" min="0.5" max="1.5" step="0.1" value="1" id="master-rate">
+                        <label for="master-rate">Speed</label>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 83.73 83.82">
+                            <g class="jogContainer">
+                                <circle class="jog" cx="41.42" cy="41.42" r="33.84" />
+                                <circle class="thumb" cx="42" cy="22" r="4.29" />
+                            </g>
+                            <path class="bar" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                            <path class="barActive" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                        </svg>
+                        <div class="dotDisplay">--</div>
+                    </div>
                 </div>
-                <div class="dotDisplay">Tillian / Reborn &gt;&gt;&gt;</div>
+                <div class="dotDisplay songName"><a href="http://tillian.band" target="_blank">Tillian / Reborn &gt;&gt;&gt; Click to hear more</a></div>
                 <div class="progressSlider">
                     <span class="timeElapsed">--:--</span>
                     <input type="range" min="0" max="100" step="1" value="0" id="master-progress">
@@ -188,6 +208,183 @@
 
             </div>
         </div>
+        <div id="track-cello" class="controllerBox track">
+            <h3 class="title">cello</h3>
+            <div class="box">
+                <div class="radialSlider">
+                    <input type="range" min="0" max="11" step="0.1" value="10" id="track-cello-volume">
+                    <label for="track-cello-volume">Volume</label>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 83.73 83.82">
+                        <g class="jogContainer">
+                            <circle class="jog" cx="41.42" cy="41.42" r="33.84" />
+                            <circle class="thumb" cx="42" cy="22" r="4.29" />
+                        </g>
+                        <path class="bar" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                        <path class="barActive" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                    </svg>
+                    <div class="dotDisplay">--</div>
+                </div>
+                <div class="toggleContainer">
+                    <div class="title">Solo</div>
+                    <input type="checkbox" id="track-cello-solo" class="toggle">
+                    <label for="track-cello-solo"></label>
+                </div>
+                <div class="toggleContainer">
+                    <div class="title">Mute</div>
+                    <input type="checkbox" id="track-cello-mute" class="toggle">
+                    <label for="track-cello-mute"></label>
+                </div>
+                <div class="buttonContainer">
+                    <button class="fadeIn" id="track-cello-fadeIn">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 13.54"  xml:space="preserve">
+                                    			<path d="M12.11,0.87c0.33,0,0.6,0.25,0.6,0.56c0,0.31-0.27,0.56-0.6,0.56c-3.36,0-5.38,1.57-7.06,4.69
+                                                        C4.69,7.36,3.66,9.56,3.5,9.88c-0.58,1.12-1.09,1.74-1.81,2c-0.07,0.03-0.14,0.04-0.22,0.04c-0.24,0-0.47-0.14-0.56-0.36
+                                                        c-0.12-0.29,0.03-0.61,0.34-0.73c0.34-0.12,0.71-0.57,1.16-1.44C2.57,9.1,3.6,6.89,3.98,6.18C5.84,2.72,8.22,0.87,12.11,0.87
+                                                        C12.11,0.87,12.11,0.87,12.11,0.87 M12.11,0L12.11,0C8.1,0,5.36,1.78,3.22,5.77C2.96,6.24,2.44,7.34,2.06,8.13
+                                                        C1.86,8.55,1.7,8.89,1.65,8.99c-0.46,0.88-0.68,1.02-0.7,1.04c-0.36,0.13-0.66,0.41-0.82,0.77c-0.16,0.35-0.16,0.74-0.01,1.1
+                                                        c0.22,0.55,0.76,0.9,1.36,0.9c0.17,0,0.35-0.03,0.51-0.09c1.11-0.4,1.75-1.4,2.29-2.42c0.06-0.12,0.25-0.51,0.48-0.98
+                                                        C5.11,8.54,5.6,7.5,5.82,7.1c1.62-3.01,3.44-4.23,6.29-4.23c0.38,0,0.74-0.14,1.02-0.4c0.29-0.27,0.45-0.64,0.45-1.03
+                                                        C13.58,0.64,12.92,0,12.11,0L12.11,0z"/>
+                            </svg>
+                    </button>
+                    <button class="fadeOut" id="track-cello-fadeOut">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 13.54"  xml:space="preserve">
+                                                <path d="M1.47,0.87c3.89,0,6.27,1.85,8.13,5.3c0.38,0.7,1.42,2.92,1.57,3.21c0.46,0.87,0.82,1.32,1.16,1.44
+                                                    c0.31,0.11,0.46,0.44,0.34,0.73c-0.09,0.22-0.32,0.36-0.56,0.36c-0.07,0-0.14-0.01-0.22-0.04c-0.71-0.26-1.23-0.88-1.81-2
+                                                    c-0.17-0.32-1.2-2.53-1.56-3.2c-1.68-3.12-3.7-4.69-7.06-4.69c0,0,0,0,0,0c0,0,0,0,0,0c-0.33,0-0.6-0.25-0.6-0.56
+                                                    C0.87,1.12,1.14,0.87,1.47,0.87C1.47,0.87,1.47,0.87,1.47,0.87 M1.47,0L1.47,0L1.47,0C1.09,0,0.73,0.14,0.45,0.4
+                                                    C0.16,0.67,0,1.04,0,1.43c0,0.79,0.66,1.43,1.47,1.43c2.85,0,4.68,1.23,6.29,4.23c0.22,0.4,0.71,1.44,1.08,2.2
+                                                    c0.23,0.48,0.41,0.86,0.48,0.99c0.53,1.02,1.18,2.02,2.29,2.42c0.16,0.06,0.34,0.09,0.51,0.09c0.6,0,1.14-0.35,1.37-0.9
+                                                    c0.15-0.36,0.14-0.75-0.02-1.1c-0.16-0.36-0.46-0.64-0.84-0.77c0-0.01-0.23-0.15-0.69-1.03c-0.05-0.1-0.21-0.43-0.41-0.85
+                                                    c-0.38-0.8-0.91-1.89-1.16-2.37C8.22,1.78,5.48,0,1.47,0L1.47,0z"/>
+                            </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div id="track-keys" class="controllerBox track">
+            <h3 class="title">keys</h3>
+            <div class="box">
+                <div class="radialSlider">
+                    <input type="range" min="0" max="11" step="0.1" value="10" id="track-keys-volume">
+                    <label for="track-keys-volume">Volume</label>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 83.73 83.82">
+                        <g class="jogContainer">
+                            <circle class="jog" cx="41.42" cy="41.42" r="33.84" />
+                            <circle class="thumb" cx="42" cy="22" r="4.29" />
+                        </g>
+                        <path class="bar" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                        <path class="barActive" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                    </svg>
+                    <div class="dotDisplay">--</div>
+                </div>
+                <div class="toggleContainer">
+                    <div class="title">Solo</div>
+                    <input type="checkbox" id="track-keys-solo" class="toggle">
+                    <label for="track-keys-solo"></label>
+                </div>
+                <div class="toggleContainer">
+                    <div class="title">Mute</div>
+                    <input type="checkbox" id="track-keys-mute" class="toggle">
+                    <label for="track-keys-mute"></label>
+                </div>
+                <div class="buttonContainer">
+                    <button class="fadeIn" id="track-keys-fadeIn">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 13.54"  xml:space="preserve">
+                                    			<path d="M12.11,0.87c0.33,0,0.6,0.25,0.6,0.56c0,0.31-0.27,0.56-0.6,0.56c-3.36,0-5.38,1.57-7.06,4.69
+                                                        C4.69,7.36,3.66,9.56,3.5,9.88c-0.58,1.12-1.09,1.74-1.81,2c-0.07,0.03-0.14,0.04-0.22,0.04c-0.24,0-0.47-0.14-0.56-0.36
+                                                        c-0.12-0.29,0.03-0.61,0.34-0.73c0.34-0.12,0.71-0.57,1.16-1.44C2.57,9.1,3.6,6.89,3.98,6.18C5.84,2.72,8.22,0.87,12.11,0.87
+                                                        C12.11,0.87,12.11,0.87,12.11,0.87 M12.11,0L12.11,0C8.1,0,5.36,1.78,3.22,5.77C2.96,6.24,2.44,7.34,2.06,8.13
+                                                        C1.86,8.55,1.7,8.89,1.65,8.99c-0.46,0.88-0.68,1.02-0.7,1.04c-0.36,0.13-0.66,0.41-0.82,0.77c-0.16,0.35-0.16,0.74-0.01,1.1
+                                                        c0.22,0.55,0.76,0.9,1.36,0.9c0.17,0,0.35-0.03,0.51-0.09c1.11-0.4,1.75-1.4,2.29-2.42c0.06-0.12,0.25-0.51,0.48-0.98
+                                                        C5.11,8.54,5.6,7.5,5.82,7.1c1.62-3.01,3.44-4.23,6.29-4.23c0.38,0,0.74-0.14,1.02-0.4c0.29-0.27,0.45-0.64,0.45-1.03
+                                                        C13.58,0.64,12.92,0,12.11,0L12.11,0z"/>
+                            </svg>
+                    </button>
+                    <button class="fadeOut" id="track-keys-fadeOut">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 13.54"  xml:space="preserve">
+                                                <path d="M1.47,0.87c3.89,0,6.27,1.85,8.13,5.3c0.38,0.7,1.42,2.92,1.57,3.21c0.46,0.87,0.82,1.32,1.16,1.44
+                                                    c0.31,0.11,0.46,0.44,0.34,0.73c-0.09,0.22-0.32,0.36-0.56,0.36c-0.07,0-0.14-0.01-0.22-0.04c-0.71-0.26-1.23-0.88-1.81-2
+                                                    c-0.17-0.32-1.2-2.53-1.56-3.2c-1.68-3.12-3.7-4.69-7.06-4.69c0,0,0,0,0,0c0,0,0,0,0,0c-0.33,0-0.6-0.25-0.6-0.56
+                                                    C0.87,1.12,1.14,0.87,1.47,0.87C1.47,0.87,1.47,0.87,1.47,0.87 M1.47,0L1.47,0L1.47,0C1.09,0,0.73,0.14,0.45,0.4
+                                                    C0.16,0.67,0,1.04,0,1.43c0,0.79,0.66,1.43,1.47,1.43c2.85,0,4.68,1.23,6.29,4.23c0.22,0.4,0.71,1.44,1.08,2.2
+                                                    c0.23,0.48,0.41,0.86,0.48,0.99c0.53,1.02,1.18,2.02,2.29,2.42c0.16,0.06,0.34,0.09,0.51,0.09c0.6,0,1.14-0.35,1.37-0.9
+                                                    c0.15-0.36,0.14-0.75-0.02-1.1c-0.16-0.36-0.46-0.64-0.84-0.77c0-0.01-0.23-0.15-0.69-1.03c-0.05-0.1-0.21-0.43-0.41-0.85
+                                                    c-0.38-0.8-0.91-1.89-1.16-2.37C8.22,1.78,5.48,0,1.47,0L1.47,0z"/>
+                            </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div id="track-drums" class="controllerBox track">
+            <h3 class="title">drums</h3>
+            <div class="box">
+                <div class="radialSlider">
+                    <input type="range" min="0" max="11" step="0.1" value="10" id="track-drums-volume">
+                    <label for="track-drums-volume">Volume</label>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 83.73 83.82">
+                        <g class="jogContainer">
+                            <circle class="jog" cx="41.42" cy="41.42" r="33.84" />
+                            <circle class="thumb" cx="42" cy="22" r="4.29" />
+                        </g>
+                        <path class="bar" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                        <path class="barActive" d="M12.66,70.19c-3.69-3.68-6.67-8.07-8.73-12.94S0.72,47.04,0.72,41.43s1.14-10.96,3.2-15.83
+                         s5.04-9.25,8.73-12.94s8.07-6.67,12.94-8.73S35.8,0.72,41.41,0.72s10.96,1.14,15.83,3.2s9.25,5.04,12.94,8.73
+                         s6.67,8.07,8.73,12.94c2.06,4.87,3.21,10.22,3.21,15.83s-1.14,10.96-3.2,15.83c-2.06,4.87-5.04,9.25-8.73,12.94" />
+                    </svg>
+                    <div class="dotDisplay">--</div>
+                </div>
+                <div class="toggleContainer">
+                    <div class="title">Solo</div>
+                    <input type="checkbox" id="track-drums-solo" class="toggle">
+                    <label for="track-drums-solo"></label>
+                </div>
+                <div class="toggleContainer">
+                    <div class="title">Mute</div>
+                    <input type="checkbox" id="track-drums-mute" class="toggle">
+                    <label for="track-drums-mute"></label>
+                </div>
+                <div class="buttonContainer">
+                    <button class="fadeIn" id="track-drums-fadeIn">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 13.54"  xml:space="preserve">
+                                    			<path d="M12.11,0.87c0.33,0,0.6,0.25,0.6,0.56c0,0.31-0.27,0.56-0.6,0.56c-3.36,0-5.38,1.57-7.06,4.69
+                                                        C4.69,7.36,3.66,9.56,3.5,9.88c-0.58,1.12-1.09,1.74-1.81,2c-0.07,0.03-0.14,0.04-0.22,0.04c-0.24,0-0.47-0.14-0.56-0.36
+                                                        c-0.12-0.29,0.03-0.61,0.34-0.73c0.34-0.12,0.71-0.57,1.16-1.44C2.57,9.1,3.6,6.89,3.98,6.18C5.84,2.72,8.22,0.87,12.11,0.87
+                                                        C12.11,0.87,12.11,0.87,12.11,0.87 M12.11,0L12.11,0C8.1,0,5.36,1.78,3.22,5.77C2.96,6.24,2.44,7.34,2.06,8.13
+                                                        C1.86,8.55,1.7,8.89,1.65,8.99c-0.46,0.88-0.68,1.02-0.7,1.04c-0.36,0.13-0.66,0.41-0.82,0.77c-0.16,0.35-0.16,0.74-0.01,1.1
+                                                        c0.22,0.55,0.76,0.9,1.36,0.9c0.17,0,0.35-0.03,0.51-0.09c1.11-0.4,1.75-1.4,2.29-2.42c0.06-0.12,0.25-0.51,0.48-0.98
+                                                        C5.11,8.54,5.6,7.5,5.82,7.1c1.62-3.01,3.44-4.23,6.29-4.23c0.38,0,0.74-0.14,1.02-0.4c0.29-0.27,0.45-0.64,0.45-1.03
+                                                        C13.58,0.64,12.92,0,12.11,0L12.11,0z"/>
+                            </svg>
+                    </button>
+                    <button class="fadeOut" id="track-drums-fadeOut">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 13.54"  xml:space="preserve">
+                                                <path d="M1.47,0.87c3.89,0,6.27,1.85,8.13,5.3c0.38,0.7,1.42,2.92,1.57,3.21c0.46,0.87,0.82,1.32,1.16,1.44
+                                                    c0.31,0.11,0.46,0.44,0.34,0.73c-0.09,0.22-0.32,0.36-0.56,0.36c-0.07,0-0.14-0.01-0.22-0.04c-0.71-0.26-1.23-0.88-1.81-2
+                                                    c-0.17-0.32-1.2-2.53-1.56-3.2c-1.68-3.12-3.7-4.69-7.06-4.69c0,0,0,0,0,0c0,0,0,0,0,0c-0.33,0-0.6-0.25-0.6-0.56
+                                                    C0.87,1.12,1.14,0.87,1.47,0.87C1.47,0.87,1.47,0.87,1.47,0.87 M1.47,0L1.47,0L1.47,0C1.09,0,0.73,0.14,0.45,0.4
+                                                    C0.16,0.67,0,1.04,0,1.43c0,0.79,0.66,1.43,1.47,1.43c2.85,0,4.68,1.23,6.29,4.23c0.22,0.4,0.71,1.44,1.08,2.2
+                                                    c0.23,0.48,0.41,0.86,0.48,0.99c0.53,1.02,1.18,2.02,2.29,2.42c0.16,0.06,0.34,0.09,0.51,0.09c0.6,0,1.14-0.35,1.37-0.9
+                                                    c0.15-0.36,0.14-0.75-0.02-1.1c-0.16-0.36-0.46-0.64-0.84-0.77c0-0.01-0.23-0.15-0.69-1.03c-0.05-0.1-0.21-0.43-0.41-0.85
+                                                    c-0.38-0.8-0.91-1.89-1.16-2.37C8.22,1.78,5.48,0,1.47,0L1.47,0z"/>
+                            </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
     <svg>
         <linearGradient id="jogGradient" gradientUnits="userSpaceOnUse" x1="22.9189" y1="76.1371" x2="90.5909" y2="76.1371" gradientTransform="matrix(1 -2.775030e-04 2.775030e-04 1 -15.3562 -34.7017)">
@@ -200,95 +397,6 @@
         </linearGradient>
     </svg>
 
-<!--    <div id="main">-->
-<!--        <div class="track-mixer-container">-->
-<!--            <div class="master-controls">-->
-<!--                <label for="master-volume">Master Volume</label>-->
-<!--                <input type="range" id="master-volume" min="0" max="1" value="1" step="0.01"/>-->
-<!--                <button id="mute-btn">Mute All</button>-->
-<!--                <button id="play-btn">Play</button>-->
-<!--                <button id="stop-btn">Stop</button>-->
-<!--                <label for="global-playbackrate">Playback Rate</label>-->
-<!--                <input type="range" id="global-playbackrate" min="0" max="4" value="1" step="0.01" />-->
-<!--            </div>-->
-<!--            <div class="track" id="track-v ocals">-->
-<!--                <p>Vocals</p>-->
-<!--                <label for="track-vocals-volume">Volume</label>-->
-<!--                <input type="range" id="track-vocals-volume" min="0" max="1" value="1" step="0.01"/>-->
-<!--                <button id="track-vocals-loop">Loop</button>-->
-<!--                <button id="track-vocals-mute">Mute</button>-->
-<!--                <button id="track-vocals-fadeIn">Fade In</button>-->
-<!--                <button id="track-vocals-fadeOut">Fade Out</button>-->
-<!--                <div class="time-scrubber-component">-->
-<!--                    <div class= "time-scrubber" id="track-vocals-time-scrubber">-->
-<!--                        <div class="time-handle" id="track-vocals-time-handle"></div>-->
-<!--                    </div>-->
-<!--                    <p id="track-vocals-timecode"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="track" id="track-guitars">-->
-<!--                <p>Guitars</p>-->
-<!--                <label for="track-guitars-volume">Volume</label>-->
-<!--                <input type="range" id="track-guitars-volume" min="0" max="1" value="1" step="0.01"/>-->
-<!--                <button id="track-guitars-loop">Loop</button>-->
-<!--                <button id="track-guitars-mute">Mute</button>-->
-<!--                <button id="track-guitars-fadeIn">Fade In</button>-->
-<!--                <button id="track-guitars-fadeOut">Fade Out</button>-->
-<!--                <div class="time-scrubber-component">-->
-<!--                    <div class= "time-scrubber" id="track-guitars-time-scrubber">-->
-<!--                        <div class="time-handle" id="track-guitars-time-handle"></div>-->
-<!--                    </div>-->
-<!--                    <p id="track-guitars-timecode"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="track" id="track-keys">-->
-<!--                <p>Keys</p>-->
-<!--                <label for="track-keys-volume">Volume</label>-->
-<!--                <input type="range" id="track-keys-volume" min="0" max="1" value="1" step="0.01"/>-->
-<!--                <button id="track-keys-loop">Loop</button>-->
-<!--                <button id="track-keys-mute">Mute</button>-->
-<!--                <button id="track-keys-fadeIn">Fade In</button>-->
-<!--                <button id="track-keys-fadeOut">Fade Out</button>-->
-<!--                <div class="time-scrubber-component">-->
-<!--                    <div class= "time-scrubber" id="track-keys-time-scrubber">-->
-<!--                        <div class="time-handle" id="track-keys-time-handle"></div>-->
-<!--                    </div>-->
-<!--                    <p id="track-keys-timecode"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="track" id="track-cello">-->
-<!--                <p>Cello</p>-->
-<!--                <label for="track-cello-volume">Volume</label>-->
-<!--                <input type="range" id="track-cello-volume" min="0" max="1" value="1" step="0.01"/>-->
-<!--                <button id="track-cello-loop">Loop</button>-->
-<!--                <button id="track-cello-mute">Mute</button>-->
-<!--                <button id="track-cello-fadeIn">Fade In</button>-->
-<!--                <button id="track-cello-fadeOut">Fade Out</button>-->
-<!--                <div class="time-scrubber-component">-->
-<!--                    <div class= "time-scrubber" id="track-cello-time-scrubber">-->
-<!--                        <div class="time-handle" id="track-cello-time-handle"></div>-->
-<!--                    </div>-->
-<!--                    <p id="track-cello-timecode"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="track" id="track-drums">-->
-<!--                <p>Drums</p>-->
-<!--                <label for="track-drums-volume">Volume</label>-->
-<!--                <input type="range" id="track-drums-volume" min="0" max="1" value="1" step="0.01"/>-->
-<!--                <button id="track-drums-loop">Loop</button>-->
-<!--                <button id="track-drums-mute">Mute</button>-->
-<!--                <button id="track-drums-fadeIn">Fade In</button>-->
-<!--                <button id="track-drums-fadeOut">Fade Out</button>-->
-<!--                <div class="time-scrubber-component">-->
-<!--                    <div class= "time-scrubber" id="track-drums-time-scrubber">-->
-<!--                        <div class="time-handle" id="track-drums-time-handle"></div>-->
-<!--                    </div>-->
-<!--                    <p id="track-drums-timecode"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        -->
-<!--    </div>-->
   <script src="../../dist/Sonorous.js"></script>
   <script src="./assets/js/knob.js"></script>
   <script src="./index.js"></script>

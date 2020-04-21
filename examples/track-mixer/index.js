@@ -9,18 +9,36 @@ let timeLeft = document.querySelector(".timeLeft");
 function addMasterControls() {
     // master volume
     setupRadialSlider(document.querySelector(`#master .volumeContainer`),
-        value =>  { window.Sonorous.masterVolume = value });
+        // volume is 0-11, map it to 0-1
+        value =>  { Sonorous.masterVolume = value/11 });
+
+    setupRadialSlider(document.querySelector(`#master .rateContainer`),
+        // rate is 0.5 to 2
+        value =>  {
+            Sonorous.sonors.forEach(sonor =>  sonor.playbackRate = value);
+        });
 
     // play
-    document.getElementById('play-btn').addEventListener('click', () => {
-        window.Sonorous.sonors.forEach((sonor) => {
-            sonor.play();
-        });
+    document.getElementById('play-btn').addEventListener('click', e => {
+        let isPlaying = e.currentTarget.classList.contains('active');
+        if (isPlaying) {
+            e.currentTarget.classList.remove('active');
+            Sonorous.sonors.forEach(sonor => {
+                sonor.pause();
+            });
+        } else {
+            e.currentTarget.classList.add('active');
+            Sonorous.sonors.forEach(sonor => {
+                sonor.play();
+                sonor.volume = parseFloat(document.getElementById(`${sonor.id}-volume`).value) / 11;
+            });
+        }
     });
 
     // stop
     document.getElementById('stop-btn').addEventListener('click', () => {
-        window.Sonorous.sonors.forEach((sonor) => {
+        document.querySelector("#play-btn").classList.remove('active');
+        Sonorous.sonors.forEach( sonor => {
             sonor.stop();
         });
     });
@@ -28,23 +46,13 @@ function addMasterControls() {
     // loop
     document.getElementById(`master-loop`).addEventListener('click', e => {
         Sonorous.sonors.forEach(sonor => sonor.loop = !sonor.loop);
-        e.currentTarget .classList.toggle("active");
+        e.currentTarget .classList.toggle('active');
     });
 
     //master mute
     document.getElementById('master-mute').addEventListener('click', () => {
-        window.Sonorous.muteAll = !window.Sonorous.muteAll;
+        Sonorous.muteAll = !Sonorous.muteAll;
     });
-
-
-    // Create playback listener
-    // let masterPlaybackRate = document.getElementById(`global-playbackrate`);
-    // masterPlaybackRate.addEventListener('input', () => {
-    //     window.Sonorous.sonors.forEach((sonor) => {
-    //         sonor.playbackRate = parseFloat(masterPlaybackRate.value);
-    //     });
-    // });
-
 
     let progressSonor = Sonorous.get('track-vocals');
     // update progress on playback
@@ -78,18 +86,76 @@ function setupTrackControls(sonor, trackId) {
 
     // Create mute listener
     document.getElementById(`${trackId}-mute`).addEventListener('click', () => {
-        sonor.muted = !sonor.muted;
+        // when other tracks are soloed, mute has no immediate effect
+        if (getSoloToggles().length == 0) {
+            sonor.muted = !sonor.muted;
+        }
     });
+
+    // Create solo listener
+    document.getElementById(`${trackId}-solo`).addEventListener('click', () => {
+        //get an array of track ids for all checked solo toggles
+        let soloToggles = getSoloToggles();
+
+        // we have at least one soloed track, ignore mutes
+        if (soloToggles.length > 0){
+            Sonorous.sonors.forEach(sonor => sonor.muted = !soloToggles.includes(sonor.id));
+        } else {
+        // no soloed track, revert mute status
+            Sonorous.sonors.forEach(
+                sonor => sonor.muted = document.querySelector(`#${sonor.id}-mute:checked`) !== null
+            );
+        }
+    });
+
 
     // Create fadeIn listener
     document.getElementById(`${trackId}-fadeIn`).addEventListener('click', () => {
-        sonor.fade(1, 1);
+        let volumeInput = document.getElementById(`${trackId}-volume`);
+        let fadeStartTime = Date.now();
+        let fadeStartVolume = sonor.volume;
+
+        // we want to update the knobs with the fade
+        // note: this is a temp hacky way
+        let fadeInterval = setInterval(()=>{
+            let volumePercent = (Date.now() - fadeStartTime) / 1000;
+            if(volumePercent >= 0 && volumePercent <= 1){
+                volumeInput.value = fadeStartVolume * 11 + volumePercent * ( 10 - fadeStartVolume * 11);
+                volumeInput.dispatchEvent(new Event('change'));
+            } else if (volumePercent >= 0) {
+                volumeInput.value = 10;
+                volumeInput.dispatchEvent(new Event('change'));
+                clearInterval(fadeInterval)
+            }
+
+        }, 30);
+
+        sonor.fade(10/11, 1);
     });
 
     // Create fadeOut listener
     document.getElementById(`${trackId}-fadeOut`).addEventListener('click', () => {
-        sonor.fade(0, 1);
+        let volumeInput = document.getElementById(`${trackId}-volume`);
+        let fadeStartTime = Date.now();
+        let fadeStartVolume = sonor.volume;
+
+        // we want to update the knobs with the fade
+        // note: this is a temp hacky way
+        let fadeInterval = setInterval(()=>{
+            let volumePercent = 1 - (Date.now() - fadeStartTime) / 1000;
+            if(volumePercent >= 0 && volumePercent <= 1){
+                volumeInput.value = volumePercent * fadeStartVolume * 11;
+                volumeInput.dispatchEvent(new Event('change'));
+            } else if (volumePercent < 0) {
+                volumeInput.value = 0;
+                volumeInput.dispatchEvent(new Event('change'));
+                clearInterval(fadeInterval)
+            }
+
+        }, 30);
     });
+
+    sonor.fade(0, 1);
 }
 
 function setupRadialSlider(parentElement, onChange) {
@@ -97,14 +163,19 @@ function setupRadialSlider(parentElement, onChange) {
     let knobJog = parentElement.querySelector('.jogContainer');
     let barActive = parentElement.querySelector('.barActive');
     let text = parentElement.querySelector('.dotDisplay');
+
+    let rangeStart = parseFloat(input.getAttribute("min"));
+    let rangeEnd = parseFloat(input.getAttribute("max"));
+
     knob(input, knobJog, {
         rangeInDegrees: 270,
         rangeStartDegree: 220,
         onUpdate: value => {
-            let degrees = value / 11 * 270 + 220;
+            let progress = (value - rangeStart) / (rangeEnd - rangeStart);
+            let degrees = progress * 270 + 220;
             knobJog.style.transform = `rotate(${degrees}deg)`;
             // this magic number is the path length. Why recalculate it when it's constant?
-            barActive.style.strokeDashoffset = (1 - value / 11) * 191;
+            barActive.style.strokeDashoffset = (1 - progress) * 191;
             text.innerHTML = value.toFixed(1);
             onChange(value);
         }
@@ -130,17 +201,23 @@ function updateProgressUI(percentComplete, duration){
     progressInput.style.setProperty('--progress-percent', `${percentComplete*100}%`);
 }
 
-if (window.Sonorous && window.Sonorous.isSupported()) {
+// returns an array of track ids for all checked solo toggles
+function getSoloToggles(){
+    return Array.from(document.querySelectorAll('input[id$="solo"]:checked'))
+        .map(el => el.id.substring(0, el.id.length-5));
+}
+
+if (Sonorous && Sonorous.isSupported()) {
     let trackMap = {
         'track-vocals': './assets/audio/Tillian_Reborn_Vocals.mp3',
         'track-guitars': './assets/audio/Tillian_Reborn_Guitars.mp3',
-        // 'track-keys': './assets/audio/Tillian_Reborn_Keys.mp3',
-        // 'track-cello': './assets/audio/Tillian_Reborn_Cello.mp3',
-        // 'track-drums': './assets/audio/Tillian_Reborn_Drums.mp3',
+        'track-keys': './assets/audio/Tillian_Reborn_Keys.mp3',
+        'track-cello': './assets/audio/Tillian_Reborn_Cello.mp3',
+        'track-drums': './assets/audio/Tillian_Reborn_Drums.mp3',
     };
 
     Object.keys(trackMap).forEach((trackId) => {
-        let sonor = window.Sonorous.addSonor(trackMap[trackId], { id: trackId });
+        let sonor = Sonorous.addSonor(trackMap[trackId], { id: trackId });
         setupTrackControls(sonor, trackId);
     });
 

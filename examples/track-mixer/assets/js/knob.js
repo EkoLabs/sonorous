@@ -113,4 +113,11 @@ function knob(inputElement, radialElement, options) {
         e.preventDefault();
     });
 
+
+
+    inputElement.addEventListener('change', e =>{
+        value = parseFloat(inputElement.value);
+        update();
+    })
+
 }
