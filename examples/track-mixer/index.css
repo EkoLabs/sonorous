@@ -1,5 +1,19 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 body{
     background : #606060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > svg{
+    display: none;
 }
 
 @font-face {
@@ -68,6 +82,7 @@ body{
 .songName{
     overflow: hidden;
     white-space: nowrap;
+    max-width: 300px;
 }
 
 .songName a{
@@ -94,6 +109,7 @@ body{
     padding: 4px 10px;
     padding-bottom: 5px;
     border-radius: 12px;
+    margin-top: 0;
 
 }
 
@@ -162,6 +178,7 @@ body{
 .radialSlider {
     position: relative;
     width: 100px;
+    min-width: 100px;
     display: flex;
     flex-direction: column;
 }
@@ -292,6 +309,11 @@ button.fadeIn svg, button.fadeOut svg{
     margin: 15px 0;
 }
 
+.row.a{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .toggleContainer{
     display: flex;
     flex-direction: column;
@@ -383,10 +405,6 @@ button.fadeIn svg, button.fadeOut svg{
     align-items: stretch;
 }
 
-#master{
-    width: 300px;
-}
-
 .sonorousLink{
     display: block;
     width: 100px;
@@ -402,19 +420,4 @@ button.fadeIn svg, button.fadeOut svg{
     text-transform: uppercase;
     padding-top: 48px;
     align-self: center;
-}
-
-
-
-/*old */
-
-.time-handle {
-    background-color: blue;
-    width: 0px;
-    height: 3px;
-}
-.time-scrubber {
-    border: 1px solid blue;
-    width: 300px;
-    height: 3px;
 }
