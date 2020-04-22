@@ -1,32 +1,51 @@
-if (window.Sonorous && window.Sonorous.isSupported()) {
+if (Sonorous && Sonorous.isSupported()) {
     const sonor = window.Sonorous.addSonor('./assets/audio/sound1.mp3');
-    const playButton = document.getElementById('play');
+
+    const boombox = document.querySelector('.boombox');
+    const playButton = document.querySelector('.play');
+    const volumeinput = document.querySelector('.volumeContainer input');
+    const volumeDial = document.querySelector('.dial');
+    const powerControl = document.querySelector('.power');
+
     playButton.addEventListener('click', () => {
-        if (sonor.isPlaying) {
-            sonor.pause();
-            playButton.innerText = 'Play';
-        } else {
-            sonor.play();
-            playButton.innerText = 'Pause';
+        if (boombox.classList.contains('active')) {
+            if (sonor.isPlaying) {
+                sonor.pause();
+                boombox.classList.remove("playing");
+            } else {
+                console.log('ff');
+                sonor.play();
+                boombox.classList.add("playing");
+            }
         }
     });
+
     sonor.on('ended', () => {
-        playButton.innerText = 'Play';
+        boombox.classList.remove("playing");
     });
 
-    const volumeControl = document.getElementById('volume');
-    volumeControl.addEventListener('input', () => {
-        sonor.volume = parseFloat(volumeControl.value);
-    });
 
-    const powerControl = document.getElementById('power');
-    powerControl.addEventListener('click', () => {
-        if (sonor.isPlaying) {
-            sonor.stop();
-            powerControl.innerHTML = 'Turn On';
-        } else {
-            sonor.play();
-            powerControl.innerHTML = 'Turn Off';
+    knob(volumeinput, volumeDial, {
+        rangeInDegrees: 270,
+        rangeStartDegree: 220,
+        onUpdate: value => {
+            sonor.volume = value;
+            let degrees = value * 270 + 40;
+            volumeDial.style.transform = `rotate(${degrees}deg)`;
         }
     });
+
+    powerControl.addEventListener('click', () => {
+        if (boombox.classList.contains('active')) {
+            if (sonor.isPlaying) {
+                sonor.stop();
+                boombox.classList.remove('playing')
+            }
+
+            boombox.classList.remove('active')
+        } else {
+            boombox.classList.add('active')
+        }
+    });
+
 }
