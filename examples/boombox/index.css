@@ -10,6 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .boombox {
@@ -17,8 +18,8 @@ body {
     background: #000000;
     border: 10px solid #242424;
     border-top: none;
-    width: 600px;
-    height: 450px;
+    min-width: 600px;
+    min-height: 450px;
     overflow: hidden;
 }
 .boombox:before {
@@ -90,6 +91,7 @@ body {
     border-radius: 5px;
     background: linear-gradient(180deg, #E3191A 0%, #E3191A 10%, #C4181F 10%, #C4181F 95%, #891B20 95%, #891B20 100%);
     cursor: pointer;
+    transition: all 0.2s ease-in;
 }
 .power:hover {
     filter: brightness(110%);
@@ -114,6 +116,7 @@ body {
     top: 0;
     left: 0;
     background: radial-gradient(ellipse at center, rgba(252, 225, 164, 0.8) 0%, rgba(204, 78, 59, 0.41) 65%, rgba(204, 78, 59, 0.2) 100%) center/70% 70% no-repeat;
+    transition: all 0.2s ease-in;
 }
 
 .volumeContainer {
@@ -149,16 +152,27 @@ body {
     font-family: arial;
 }
 
-.volumeContainer input{
+.volumeContainer input {
     display: none;
 }
 
 .dial {
+    position: relative;
+    cursor: pointer;
     width: 50px;
     height: 50px;
-    background-image: url(https://res.cloudinary.com/dlkxfitke/image/upload/v1587554328/sonorous/sonorous_volume.png);
-    background-size: contain;
-    cursor: pointer;
+    touch-action: none;
+    background: radial-gradient(circle at center, #1e1e1e 0 10.7%, #755a23 10.7% 12.6%, #1e1e1e 12.6% 19.5%, #755a23 19.5% 21.4%, #1e1e1e 21.4% 28.2%, #755a23 28.2% 30.1%, #1e1e1e 30.1% 36.9%, #755a23 36.9% 38.8%, #1e1e1e 38.8% 52.7%, #755a23 52.7% 54.8%, #a57619 54.8% 56.4%, #d8a640 56.4% 63.3%, #8e671a 63.3% 70%, transparent 70% 100%);
+}
+.dial:before {
+    content: "";
+    position: absolute;
+    width: 8%;
+    height: 25%;
+    background-color: #c6c6c6;
+    top: 72%;
+    left: 46%;
+    border-radius: 35%;
 }
 
 .controls {
@@ -181,10 +195,6 @@ body {
     border: 0;
     --border-width: 2px;
     background: linear-gradient(to bottom, #bd8927 0, #bd8927 var(--border-width) 0, transparent var(--border-width), transparent 100%) var(--border-width) 0px/calc(100% - var(--border-width) * 2) 100% no-repeat, linear-gradient(to left, #e7aa30 0, #e29d30 var(--border-width) 0, transparent var(--border-width), transparent 100%) 0px var(--border-width)/100% calc(100% - var(--border-width) * 2) no-repeat, linear-gradient(to top, #996b1e 0, #996b1e var(--border-width) 0, transparent var(--border-width), transparent 100%) var(--border-width) 0px/calc(100% - var(--border-width) * 2) 100% no-repeat, linear-gradient(to right, #6c4510 0, #96691d var(--border-width) 0, transparent var(--border-width), transparent 100%) 0px var(--border-width)/100% calc(100% - var(--border-width) * 2) no-repeat, linear-gradient(to right, #e29c30 0%, #e7aa30 100%) var(--border-width) calc(var(--border-width) - 1px)/calc(100% - var(--border-width) * 2) calc(100% - var(--border-width) * 2 + 1px) no-repeat, linear-gradient(to top right, transparent 0, transparent var(--border-width) 0, #6d4611 var(--border-width), #6d4611 20%, transparent 20%), linear-gradient(to top left, transparent 0, transparent var(--border-width) 0, #bd8827 var(--border-width), #bd8827 20%, transparent 20%), linear-gradient(to bottom left, transparent 0, transparent var(--border-width) 0, #b48224 var(--border-width), #b48224 20%, transparent 20%), linear-gradient(to right bottom, transparent 0, transparent var(--border-width) 0, #986a1e var(--border-width), #986a1e 20%, transparent 20%);
-    cursor: pointer;
-}
-.controls button:hover {
-    filter: brightness(110%);
 }
 .controls button:before {
     content: "";
@@ -198,22 +208,45 @@ body {
     background-position: calc(50% + 1px) 50%;
 }
 
+.play {
+    filter: brightness(0.5);
+    cursor: not-allowed;
+}
+
 .controls button.play:before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 22.59 25.81' %3E%3Cpath style='fill: %23100E0F' d='M0,2.17v21.48c0,1.69,1.8,2.68,3.26,1.86l18.28-10.77c1.4-0.82,1.4-2.85,0-3.73L3.26,0.25 C1.8-0.51,0,0.54,0,2.17z'/%3E%3C/svg%3E%0A");
 }
 
+.controls button.pause:before {
+    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 23.08 24.44'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23100E0F;%7D%0A%3C/style%3E%3Cpath class='st0' d='M21.37,24.44h-4.08c-0.94,0-1.7-0.76-1.7-1.7V1.7c0-0.94,0.76-1.7,1.7-1.7l4.08,0c0.94,0,1.7,0.76,1.7,1.7 v21.03C23.08,23.67,22.31,24.44,21.37,24.44z'/%3E%3Cpath class='st0' d='M5.89,24.44H1.34C0.6,24.44,0,23.83,0,23.09L0,1.34C0,0.6,0.6,0,1.34,0l4.54,0c0.74,0,1.34,0.6,1.34,1.34 v21.75C7.23,23.83,6.63,24.44,5.89,24.44z'/%3E%3C/svg%3E ");
+}
+
+.controls button.stop:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 22.71 22.71' %3E%3Cpath style='fill-rule:evenodd;clip-rule:evenodd;fill:%23100E0F;' d='M20.01,22.71H2.71C1.21,22.71,0,21.5,0,20.01V2.71C0,1.21,1.21,0,2.71,0h17.3c1.49,0,2.71,1.21,2.71,2.71v17.3 C22.71,21.5,21.5,22.71,20.01,22.71z'/%3E%3C/svg%3E");
+}
+
 .logo {
     position: absolute;
-    width: 200px;
-    height: 100px;
     left: 50%;
     transform: translateX(-50%);
-    top: 130px;
-    background-image: url(https://res.cloudinary.com/dlkxfitke/image/upload/v1587554938/sonorous/sonorous_amp_logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    text-indent: -1000px;
+    top: 125px;
     z-index: 20;
+    font-family: 'SignPainter';
+    font-weight: normal;
+    font-style: normal;
+    color: #7F7D7C;
+    font-size: 70px;
+    -webkit-text-stroke: 15px #242424;
+}
+.logo:before {
+    position: absolute;
+    left: 1px;
+    top: -1px;
+    content: "Sonorous";
+    color: #7F7D7C;
+    text-shadow: none;
+    text-shadow: 0 3px 0 #AFB0AF;
+    -webkit-text-stroke: 0 white;
 }
 
 .driver {
@@ -221,9 +254,28 @@ body {
     width: 280px;
     height: 280px;
     top: 150px;
-    background-image: url(https://res.cloudinary.com/dlkxfitke/image/upload/v1587554328/sonorous/sonorous_driver.png);
-    background-size: 100%;
-    background-repeaT: no-repeat;
+    --l1: 18%;
+    --l2: 20%;
+    --l3: 22%;
+    --l4: 27%;
+    --l5: 38.5%;
+    --l6: 43%;
+    --l7: 46%;
+    --l8: 54%;
+    --l9: 64%;
+    --l10: 90%;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l9), black var(--l9), black var(--l10), rgba(0, 0, 0, 0) var(--l10), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l8), transparent var(--l8), transparent var(--l9), rgba(0, 0, 0, 0) var(--l9), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l7), black var(--l7), black var(--l8), rgba(0, 0, 0, 0) var(--l8), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l6), #242424 var(--l6), #242424 var(--l7), rgba(0, 0, 0, 0) var(--l7), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l5), #141514 var(--l5), #141514 var(--l6), rgba(0, 0, 0, 0) var(--l6), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l4), transparent var(--l4), transparent var(--l5), rgba(0, 0, 0, 0) var(--l5), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l3), rgba(0, 0, 0, 0.2) var(--l3), rgba(0, 0, 0, 0.2) var(--l4), rgba(0, 0, 0, 0) var(--l4), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l2), #6d1318 var(--l2), #6d1318 var(--l3), rgba(0, 0, 0, 0) var(--l3), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l1), #4d090c var(--l1), #4d090c var(--l2), rgba(0, 0, 0, 0) var(--l2), rgba(0, 0, 0, 0) 100%), conic-gradient(#c4181f 0%, #c4181f 7%, #E3191A 7%, #E3191A 24%, #C4181F 24%, #C4181F 37%, #9D1E23 37%, #9D1E23 72%, #C4181F 72%, #C4181F 88%, #E3191A 88%, #E3191A 96%, #C4181F 96%, #C4181F 100%) 50% 50%/54.2% 54.2% no-repeat, conic-gradient(#111111 0%, #111111 2%, transparent 2%, transparent 90%, #111111 90%, #111111 96%, transparent 96%, transparent 98%, #111111 98%, #111111 100%) 50% 50%/90% 90% no-repeat, radial-gradient(circle at 47% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, black 30%, black 58%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0) 100%), radial-gradient(circle at 51% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 54%, #444545 54%, #444545 56%, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 100%), black;
+}
+.driver:before {
+    content: "";
+    position: absolute;
+    width: 26%;
+    height: 26%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 100%;
+    background: radial-gradient(circle at 70% 30%, #efbf5f 0%, #efbf5f 10%, #d8a640 30%, #d8a640 40%, #ca9721 60%, #7e5d15 90%);
 }
 
 .leftDriver {
@@ -239,11 +291,14 @@ body {
 }
 .boombox.active .power:after {
     display: block;
-    animation: noise-light 2s steps(4, end) infinite;
+    animation: noise-light 1.5s steps(6, end) infinite;
 }
-
-.boombox.playing button.play:before{
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 23.08 24.44'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23100E0F;%7D%0A%3C/style%3E%3Cpath class='st0' d='M21.37,24.44h-4.08c-0.94,0-1.7-0.76-1.7-1.7V1.7c0-0.94,0.76-1.7,1.7-1.7l4.08,0c0.94,0,1.7,0.76,1.7,1.7 v21.03C23.08,23.67,22.31,24.44,21.37,24.44z'/%3E%3Cpath class='st0' d='M5.89,24.44H1.34C0.6,24.44,0,23.83,0,23.09L0,1.34C0,0.6,0.6,0,1.34,0l4.54,0c0.74,0,1.34,0.6,1.34,1.34 v21.75C7.23,23.83,6.63,24.44,5.89,24.44z'/%3E%3C/svg%3E ");
+.boombox.active button:hover {
+    filter: brightness(110%);
+}
+.boombox.active .play {
+    filter: brightness(1);
+    cursor: pointer;
 }
 
 .boombox.playing .driver {
@@ -253,11 +308,22 @@ body {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-.boombox.playing .rightDriver {
-    animation-delay: 0.01s;
-}
 .boombox.playing button.play {
     filter: hue-rotate(310deg) brightness(60%) contrast(300%);
+}
+
+.rightDriver {
+    animation-delay: 0.01s;
+}
+
+.shoutout {
+    margin: 10px;
+    font-family: arial;
+    font-size: 12px;
+    color: #aaaaaa;
+}
+.shoutout a {
+    color: #cccccc;
 }
 
 @keyframes speaker-on {
@@ -283,7 +349,7 @@ body {
         transform: scale(1);
     }
     100% {
-        transform: scale(1);
+        transform: scale(0.9);
     }
 }
 @keyframes noise-light {
@@ -294,12 +360,37 @@ body {
         opacity: 0.9;
     }
     40% {
-        opacity: 0.5;
+        opacity: 0.7;
     }
     80% {
-        opacity: 0.6;
+        opacity: 0.8;
     }
     100% {
         opacity: 1;
+    }
+}
+@font-face {
+    font-family: 'SignPainter';
+    src: url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.eot");
+    src: url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.eot?#iefix") format("embedded-opentype"), url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.woff2") format("woff2"), url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.woff") format("woff"), url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.ttf") format("truetype"), url("https://eko.com/s/sonorous/demos/signPainter-HouseScript.svg#SignPainter-HouseScript") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@media only screen and (max-width: 700px) {
+    body {
+        transform: scale(0.7);
+    }
+
+    .shoutout {
+        font-size: 22px;
+    }
+}
+@media only screen and (max-width: 599px) {
+    body {
+        transform: scale(0.5);
+    }
+
+    .shoutout {
+        font-size: 22px;
     }
 }

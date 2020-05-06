@@ -20,7 +20,7 @@ body > svg{
     font-family: 'ChessType';
     font-style: normal;
     font-weight: normal;
-    src: local('ChessType'), url('assets/fonts/ChessType.woff') format('woff');
+    src: local('ChessType'), url('https://eko.com/s/sonorous/demos/track_mixer/ChessType.woff') format('woff');
 }
 
 .controllerBox{
@@ -191,6 +191,7 @@ body > svg{
     transform-origin: center;
     cursor: pointer;
     pointer-events: all;
+    touch-action: none;
 }
 
 .radialSlider input { display: none}
@@ -383,26 +384,26 @@ button.fadeIn svg, button.fadeOut svg{
 }
 
 #track-vocals > .title{
-    background-image: url(./assets/icons/vocals.svg);
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/vocals.svg);
 }
 
 #track-guitars > .title{
-    background-image: url(./assets/icons/guitars.svg);
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/guitars.svg);
     background-size: 20px;
 }
 
 #track-cello > .title{
-    background-image: url(./assets/icons/cello.svg);
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/cello.svg);
     background-size: 20px;
 }
 
 #track-keys > .title{
-    background-image: url(./assets/icons/keys.svg);
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/keys.svg);
     background-size: 20px;
 }
 
 #track-drums > .title{
-    background-image: url(./assets/icons/drums.svg);
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/drums.svg);
     background-size: 20px;
 }
 
@@ -413,7 +414,7 @@ button.fadeIn svg, button.fadeOut svg{
 .sonorousLink{
     display: block;
     width: 100px;
-    background-image: url(./assets/icons/sonorous.svg);
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/sonorous.svg);
     background-repeat: no-repeat;
     background-position: top center;
     text-align: center;
@@ -425,4 +426,15 @@ button.fadeIn svg, button.fadeOut svg{
     text-transform: uppercase;
     padding-top: 48px;
     align-self: center;
+}
+
+.shoutout{
+    color: #bbbbbb;
+    text-align: center;
+    font-size: 12px;
+    margin-top: auto;
+}
+
+.shoutout a{
+    color: #cccccc;
 }
