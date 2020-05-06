@@ -62,61 +62,87 @@ function knob(inputElement, radialElement, options) {
         return angleInDegrees;
     }
 
-    window.addEventListener('mousemove', e => {
-        if (mouseDown) {
-            let currentDegree = getDegrees(e.clientX, e.clientY);
-            if (currentDegree - previousDegree > 300) {
-                revolutions -= 1;
-            } else if (currentDegree - previousDegree < -300) {
-                revolutions += 1;
+    ['mousemove','touchmove'].forEach( eventName =>
+        window.addEventListener(eventName, e => {
+            if (mouseDown) {
+                let currentDegree;
+
+                if (eventName === 'mousemove') {
+                    currentDegree = getDegrees(e.clientX, e.clientY);
+                } else if (eventName === 'touchmove') {
+                    currentDegree = getDegrees(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+                };
+
+                if (currentDegree - previousDegree > 300) {
+                    revolutions -= 1;
+                } else if (currentDegree - previousDegree < -300) {
+                    revolutions += 1;
+                }
+                let wrappedDegree = currentDegree + revolutions * 360;
+                degreeDelta = wrappedDegree - startDegree;
+
+                // console.log(degreeDelta);
+
+                valueDelta = degreeDelta / rangeInDegrees * (valueRangeEnd - valueRangeStart);
+                updateValue(startValue + valueDelta);
+                update();
+
+                previousDegree = currentDegree;
+                if (eventName === 'mousemove') {
+                    e.preventDefault();
+                }
             }
-            let wrappedDegree = currentDegree + revolutions * 360;
-            degreeDelta = wrappedDegree - startDegree;
+        })
+    );
 
-            // console.log(degreeDelta);
+    ['click','touch'].forEach( eventName =>
+        radialElement.addEventListener(eventName, e => {
+            if (typeof degreeDelta === 'undefined' || degreeDelta === null){
+                let degree = getDegrees(e.clientX, e.clientY);
+                // degree relative to the rangeStartDegree
+                let relativeDegree = norrmalizeDegree(degree + rangeStartDegree);
+                newValue = relativeDegree / rangeInDegrees * (valueRangeEnd - valueRangeStart) + valueRangeStart;
+                updateValue(newValue);
+                update();
 
-            valueDelta = degreeDelta / rangeInDegrees * (valueRangeEnd - valueRangeStart);
-            updateValue(startValue + valueDelta);
-            update();
+                e.preventDefault();
+            }
+        })
+    );
 
-            previousDegree = currentDegree;
-            e.preventDefault();
-        }
-    })
+    ['mousedown','touchstart'].forEach( eventName =>
+        radialElement.addEventListener(eventName, e => {
+            mouseDown = true;
+            if (eventName === 'mousedown') {
+                startPoint = {
+                    x: e.clientX,
+                    y: e.clientY
+                }
+            } else if (eventName === 'touchstart') {
+                startPoint = {
+                    x: e.targetTouches[0].clientX,
+                    y: e.targetTouches[0].clientY
+                }
+            };
 
-    radialElement.addEventListener('click', e => {
-        if (typeof degreeDelta === 'undefined' || degreeDelta === null){
-            let degree = getDegrees(e.clientX, e.clientY);
-            // degree relative to the rangeStartDegree
-            let relativeDegree = norrmalizeDegree(degree + rangeStartDegree);
-            newValue = relativeDegree / rangeInDegrees * (valueRangeEnd - valueRangeStart) + valueRangeStart;
-            updateValue(newValue);
-            update();
-            e.preventDefault();
-        }
-    });
+            startDegree = getDegrees(startPoint.x, startPoint.y);
+            startValue = value;
+            revolutions = 0;
+        })
+    );
 
-    radialElement.addEventListener('mousedown', e => {
-        mouseDown = true;
-        startPoint = {
-            x: e.clientX,
-            y: e.clientY
-        }
-        startDegree = getDegrees(startPoint.x, startPoint.y);
-        startValue = value;
-        revolutions = 0;
-    });
+    ['mouseup','touchend'].forEach( eventName =>
+        window.addEventListener(eventName, e => {
+            mouseDown = false;
+            startPoint = null;
+            startValue = null;
+            revolutions = null;
 
-    window.addEventListener('mouseup', e => {
-        mouseDown = false;
-        startPoint = null;
-        startValue = null;
-        revolutions = null;
-
-        setTimeout(()=>{
-            degreeDelta = null;
-        }, 200);
-    });
+            setTimeout(()=>{
+                degreeDelta = null;
+            }, 200);
+        })
+    );
 
     radialElement.addEventListener('wheel', e => {
         let ticks = (valueRangeEnd - valueRangeStart) / 50;
@@ -131,6 +157,10 @@ function knob(inputElement, radialElement, options) {
         value = parseFloat(inputElement.value);
         update();
     })
+
+    window.addEventListener('resize', e => {
+        updateBB();
+    });
 
     function norrmalizeDegree(deg){
         while(deg>360){
