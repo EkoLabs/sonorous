@@ -1,17 +1,32 @@
+
+<img src="https://eko.engineering/static/media/sonorous_logo.83f6c44b.svg" alt="Sonorous" width="200"/>
+
 # Sonorous
-Sonorous is built for the modern browser, enabling easy audio integration into web apps and games. As an abstraction over the [WebAudio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), Sonorous offers fine-grained control for those who need it, while handling any cross-browser issues for you.
+Sonorous is a JavaScript audio library built for the modern browser, enabling easy audio integration into web apps and games. As an abstraction over the [WebAudio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), Sonorous offers fine-grained control for those who need it, while handling any cross-browser issues for you.
 
 # Table of Contents
+* [Examples](#examples)
 * [Getting Started](#getting-started)
     * [Installing Sonorous](#installing-sonorous)
     * [Usage](#usage)
 * [API](#api)
     * [Sonorous](#sonorous)
     * [Sonor](#sonor)
-* [Examples](#examples)
 * [Developing Locally](#developing-locally)
 * [Contributing](#contributing)
 * [Supported Browsers](#supported-browsers)
+
+# Examples
+
+[Boombox](https://codepen.io/OpherV/pen/xxwRMBw?editors=0100)
+
+![image](https://user-images.githubusercontent.com/3951311/81201022-71e32280-8fcd-11ea-9b9d-6adcf7fa6394.png)
+
+[Track Mixer](https://codepen.io/OpherV/pen/PoPQwaz?editors=0010)
+
+![image](https://user-images.githubusercontent.com/3951311/81200872-3ba5a300-8fcd-11ea-90cf-7de98cacfaf8.png)
+
+See the repo's `examples/` directory for the source code.
 
 # Getting Started
 ## Installing Sonorous
@@ -315,8 +330,6 @@ Will trigger if any error occurs during a Sonor operation
 | sonorObj | Sonor | The instance of Sonor that was operated on |
 | error | String | Error message |
 
-# Examples
-Live examples can be found here. Please see the repo's `examples/` directory for the code.
 
 # Developing Locally
 Once you have the repo locally, run `yarn install` to install dependencies.
