@@ -1,0 +1,396 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #444444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.boombox {
+    position: relative;
+    background: #000000;
+    border: 10px solid #242424;
+    border-top: none;
+    min-width: 600px;
+    min-height: 450px;
+    overflow: hidden;
+}
+.boombox:before {
+    content: "";
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: calc(100% - 100px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 50.14 57.8'%3E%3Cpath style='fill-rule:evenodd;clip-rule:evenodd;fill:%23242424;' d='M37.48,57.7c-0.06-0.03-0.11-0.07-0.15-0.1c-0.05-0.1-0.09-0.2-0.15-0.3l-5.7-9.8 c-0.08-0.15-0.17-0.28-0.26-0.41c-0.02-0.06-0.04-0.12-0.04-0.19c0-0.08,0.02-0.16,0.05-0.24c0.08-0.12,0.17-0.23,0.25-0.36 l5.7-9.8c0.06-0.1,0.1-0.21,0.15-0.31c0.06-0.05,0.11-0.09,0.15-0.09c0.1-0.1,0.3-0.1,0.6-0.1h11.3c0.2,0,0.4,0,0.6,0.1 c0.04,0.04,0.1,0.08,0.16,0.13v-7.54c-0.05,0.04-0.09,0.08-0.16,0.11c-0.1,0.1-0.3,0.1-0.6,0.1h-11.3c-0.2,0-0.4,0-0.6-0.1 c-0.06-0.03-0.11-0.07-0.15-0.1c-0.05-0.1-0.09-0.2-0.15-0.3l-5.7-9.8c-0.08-0.15-0.17-0.28-0.26-0.41 c-0.02-0.06-0.04-0.12-0.04-0.19c0-0.03,0.02-0.06,0.02-0.1c0.09-0.14,0.19-0.26,0.28-0.4l5.7-9.8c0.08-0.15,0.15-0.31,0.22-0.47 c0.03-0.02,0.06-0.03,0.08-0.03c0.02-0.02,0.06-0.02,0.09-0.03c0.17,0.01,0.34,0.03,0.51,0.03h11.3c0.17,0,0.32-0.02,0.49-0.03 c0.04,0.01,0.08,0.01,0.11,0.03c0.04,0.04,0.1,0.09,0.16,0.15V0h-0.16c-0.1,0.1-0.3,0.1-0.6,0.1h-11.3c-0.2,0-0.4,0-0.6-0.1h-8.2 l1.8,3.1c0.09,0.16,0.19,0.31,0.29,0.46c0,0.01,0.01,0.02,0.01,0.04c-0.05,0.11-0.08,0.21-0.11,0.32 c-0.06,0.09-0.13,0.18-0.19,0.28l-5.7,9.8c-0.06,0.1-0.1,0.21-0.15,0.32c-0.06,0.05-0.11,0.08-0.15,0.08c-0.1,0.1-0.3,0.1-0.6,0.1 h-11.3c-0.2,0-0.4,0-0.6-0.1c-0.07-0.13-0.13-0.27-0.2-0.4l-5.8-9.8C6.5,4.05,6.4,3.92,6.32,3.79C6.31,3.74,6.3,3.7,6.29,3.66 C6.42,3.47,6.56,3.3,6.68,3.1L8.48,0h-8.4C0.06,0.02,0.02,0.02,0,0.03v7.14c0.02,0,0.04,0,0.07,0c0.02,0.01,0.05,0.01,0.07,0.02 C0.22,7.36,0.29,7.53,0.38,7.7l5.7,9.8c0.11,0.2,0.24,0.39,0.36,0.58c-0.12,0.17-0.25,0.34-0.36,0.52l-5.7,9.8 c-0.05,0.09-0.09,0.19-0.14,0.29c-0.05,0.04-0.09,0.08-0.16,0.11C0.06,28.82,0.02,28.82,0,28.83v7.22 c0.06,0.01,0.12,0.02,0.18,0.05c0.01,0,0.01,0.01,0.02,0.01c0.06,0.13,0.11,0.26,0.18,0.39l5.7,9.8c0.12,0.22,0.26,0.42,0.39,0.62 c-0.01,0.02-0.02,0.04-0.03,0.06c-0.12,0.17-0.25,0.33-0.36,0.52l-5.7,9.8c-0.05,0.09-0.09,0.19-0.14,0.29 c-0.05,0.04-0.09,0.08-0.16,0.11C0.06,57.72,0.02,57.72,0,57.73v0.07h8.42l3.96-6.8c0.09-0.17,0.16-0.34,0.24-0.52 c0.11-0.07,0.29-0.08,0.56-0.08h11.3c0.2,0,0.4,0,0.6,0.1c0.04,0.02,0.06,0.04,0.1,0.07c0.07,0.14,0.13,0.29,0.2,0.43l3.96,6.8 h8.74C37.88,57.8,37.68,57.8,37.48,57.7z M25.38,42.9c-0.02,0.04-0.04,0.09-0.06,0.13c-0.09,0.1-0.18,0.17-0.24,0.17 c-0.1,0.1-0.3,0.1-0.6,0.1h-11.3c-0.2,0-0.4,0-0.6-0.1c-0.03-0.02-0.05-0.04-0.08-0.05c-0.04-0.08-0.08-0.17-0.12-0.25l-4.14-7 L6.58,33c-0.1-0.2-0.2-0.4-0.2-0.6c0-0.03,0.02-0.06,0.02-0.1c0.09-0.14,0.19-0.26,0.28-0.4l5.7-9.8c0.08-0.14,0.14-0.29,0.2-0.43 c0.03-0.02,0.06-0.05,0.1-0.07c0.01-0.01,0.04-0.01,0.06-0.02c0.11,0,0.23,0.02,0.34,0.02h11.3c0.22,0,0.43-0.03,0.65-0.04 c0.04,0.01,0.07,0.02,0.11,0.03c0.08,0.17,0.15,0.34,0.24,0.51l5.7,9.8c0.11,0.2,0.24,0.38,0.36,0.57 c-0.08,0.14-0.13,0.26-0.16,0.35c-0.06,0.1-0.13,0.18-0.2,0.28L25.38,42.9z'/%3E%3Cpath style='fill-rule:evenodd;clip-rule:evenodd;fill:%23242424;' d='M50.14,57.59c-0.05,0.04-0.09,0.08-0.16,0.11c-0.1,0.1-0.3,0.1-0.6,0.1h0.76V57.59z'/%3E%3C/svg%3E ");
+    background-size: 23px;
+    z-index: 20;
+}
+
+.head {
+    position: relative;
+    background: #CA9721;
+    width: 100%;
+    height: 80px;
+    border-top: 10px solid #D6A231;
+    border-bottom: 10px solid #B5861B;
+}
+.head:before, .head:after {
+    content: "";
+    position: absolute;
+    background: #D6A231;
+    transform: skew(-30deg);
+}
+.head:before {
+    height: 100%;
+    width: 120px;
+    left: 260px;
+}
+.head:after {
+    height: 100%;
+    width: 50px;
+    left: 390px;
+}
+
+.guitarInput {
+    position: absolute;
+    left: 30px;
+    top: 22px;
+    background: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    border: 4px solid #242424;
+}
+.guitarInput:before {
+    content: "";
+    position: absolute;
+    background: black;
+    width: 20px;
+    height: 4px;
+    border-radius: 40px;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.power {
+    position: absolute;
+    height: 40px;
+    width: 30px;
+    right: 30px;
+    top: 15px;
+    background: #C4181F;
+    border: 6px solid black;
+    border-radius: 5px;
+    background: linear-gradient(180deg, #E3191A 0%, #E3191A 10%, #C4181F 10%, #C4181F 95%, #891B20 95%, #891B20 100%);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+.power:hover {
+    filter: brightness(110%);
+}
+.power:before {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    width: 20px;
+    height: 4px;
+    border-radius: 40px;
+}
+.power:after {
+    display: none;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(252, 225, 164, 0.8) 0%, rgba(204, 78, 59, 0.41) 65%, rgba(204, 78, 59, 0.2) 100%) center/70% 70% no-repeat;
+    transition: all 0.2s ease-in;
+}
+
+.volumeContainer {
+    position: absolute;
+    left: 90px;
+    top: 12px;
+}
+.volumeContainer:before, .volumeContainer:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "";
+    width: 120%;
+    height: 120%;
+    border: 2px solid black;
+    border-radius: 100px;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    pointer-events: none;
+}
+.volumeContainer:after {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+}
+.volumeContainer .title {
+    position: absolute;
+    width: 100%;
+    bottom: -15px;
+    font-size: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: arial;
+}
+
+.volumeContainer input {
+    display: none;
+}
+
+.dial {
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    touch-action: none;
+    background: radial-gradient(circle at center, #1e1e1e 0 10.7%, #755a23 10.7% 12.6%, #1e1e1e 12.6% 19.5%, #755a23 19.5% 21.4%, #1e1e1e 21.4% 28.2%, #755a23 28.2% 30.1%, #1e1e1e 30.1% 36.9%, #755a23 36.9% 38.8%, #1e1e1e 38.8% 52.7%, #755a23 52.7% 54.8%, #a57619 54.8% 56.4%, #d8a640 56.4% 63.3%, #8e671a 63.3% 70%, transparent 70% 100%);
+}
+.dial:before {
+    content: "";
+    position: absolute;
+    width: 8%;
+    height: 25%;
+    background-color: #c6c6c6;
+    top: 72%;
+    left: 46%;
+    border-radius: 35%;
+}
+
+.controls {
+    position: absolute;
+    left: 50%;
+    top: 18px;
+    padding: 2px 5px;
+    transform: translateX(-50%);
+    background: #332814;
+    border-top: 3px solid #3B393A;
+    border-bottom: 3px solid #3B393A;
+    border-radius: 5px;
+}
+
+.controls button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    border: 0;
+    --border-width: 2px;
+    background: linear-gradient(to bottom, #bd8927 0, #bd8927 var(--border-width) 0, transparent var(--border-width), transparent 100%) var(--border-width) 0px/calc(100% - var(--border-width) * 2) 100% no-repeat, linear-gradient(to left, #e7aa30 0, #e29d30 var(--border-width) 0, transparent var(--border-width), transparent 100%) 0px var(--border-width)/100% calc(100% - var(--border-width) * 2) no-repeat, linear-gradient(to top, #996b1e 0, #996b1e var(--border-width) 0, transparent var(--border-width), transparent 100%) var(--border-width) 0px/calc(100% - var(--border-width) * 2) 100% no-repeat, linear-gradient(to right, #6c4510 0, #96691d var(--border-width) 0, transparent var(--border-width), transparent 100%) 0px var(--border-width)/100% calc(100% - var(--border-width) * 2) no-repeat, linear-gradient(to right, #e29c30 0%, #e7aa30 100%) var(--border-width) calc(var(--border-width) - 1px)/calc(100% - var(--border-width) * 2) calc(100% - var(--border-width) * 2 + 1px) no-repeat, linear-gradient(to top right, transparent 0, transparent var(--border-width) 0, #6d4611 var(--border-width), #6d4611 20%, transparent 20%), linear-gradient(to top left, transparent 0, transparent var(--border-width) 0, #bd8827 var(--border-width), #bd8827 20%, transparent 20%), linear-gradient(to bottom left, transparent 0, transparent var(--border-width) 0, #b48224 var(--border-width), #b48224 20%, transparent 20%), linear-gradient(to right bottom, transparent 0, transparent var(--border-width) 0, #986a1e var(--border-width), #986a1e 20%, transparent 20%);
+}
+.controls button:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: calc(50% + 1px) 50%;
+}
+
+.play {
+    filter: brightness(0.5);
+    cursor: not-allowed;
+}
+
+.controls button.play:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 22.59 25.81' %3E%3Cpath style='fill: %23100E0F' d='M0,2.17v21.48c0,1.69,1.8,2.68,3.26,1.86l18.28-10.77c1.4-0.82,1.4-2.85,0-3.73L3.26,0.25 C1.8-0.51,0,0.54,0,2.17z'/%3E%3C/svg%3E%0A");
+}
+
+.controls button.pause:before {
+    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 23.08 24.44'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%23100E0F;%7D%0A%3C/style%3E%3Cpath class='st0' d='M21.37,24.44h-4.08c-0.94,0-1.7-0.76-1.7-1.7V1.7c0-0.94,0.76-1.7,1.7-1.7l4.08,0c0.94,0,1.7,0.76,1.7,1.7 v21.03C23.08,23.67,22.31,24.44,21.37,24.44z'/%3E%3Cpath class='st0' d='M5.89,24.44H1.34C0.6,24.44,0,23.83,0,23.09L0,1.34C0,0.6,0.6,0,1.34,0l4.54,0c0.74,0,1.34,0.6,1.34,1.34 v21.75C7.23,23.83,6.63,24.44,5.89,24.44z'/%3E%3C/svg%3E ");
+}
+
+.controls button.stop:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 22.71 22.71' %3E%3Cpath style='fill-rule:evenodd;clip-rule:evenodd;fill:%23100E0F;' d='M20.01,22.71H2.71C1.21,22.71,0,21.5,0,20.01V2.71C0,1.21,1.21,0,2.71,0h17.3c1.49,0,2.71,1.21,2.71,2.71v17.3 C22.71,21.5,21.5,22.71,20.01,22.71z'/%3E%3C/svg%3E");
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 125px;
+    z-index: 20;
+    font-family: 'SignPainter';
+    font-weight: normal;
+    font-style: normal;
+    color: #7F7D7C;
+    font-size: 70px;
+    -webkit-text-stroke: 15px #242424;
+}
+.logo:before {
+    position: absolute;
+    left: 1px;
+    top: -1px;
+    content: "Sonorous";
+    color: #7F7D7C;
+    text-shadow: none;
+    text-shadow: 0 3px 0 #AFB0AF;
+    -webkit-text-stroke: 0 white;
+}
+
+.driver {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: 150px;
+    --l1: 18%;
+    --l2: 20%;
+    --l3: 22%;
+    --l4: 27%;
+    --l5: 38.5%;
+    --l6: 43%;
+    --l7: 46%;
+    --l8: 54%;
+    --l9: 64%;
+    --l10: 90%;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l9), black var(--l9), black var(--l10), rgba(0, 0, 0, 0) var(--l10), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l8), transparent var(--l8), transparent var(--l9), rgba(0, 0, 0, 0) var(--l9), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l7), black var(--l7), black var(--l8), rgba(0, 0, 0, 0) var(--l8), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l6), #242424 var(--l6), #242424 var(--l7), rgba(0, 0, 0, 0) var(--l7), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l5), #141514 var(--l5), #141514 var(--l6), rgba(0, 0, 0, 0) var(--l6), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l4), transparent var(--l4), transparent var(--l5), rgba(0, 0, 0, 0) var(--l5), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l3), rgba(0, 0, 0, 0.2) var(--l3), rgba(0, 0, 0, 0.2) var(--l4), rgba(0, 0, 0, 0) var(--l4), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l2), #6d1318 var(--l2), #6d1318 var(--l3), rgba(0, 0, 0, 0) var(--l3), rgba(0, 0, 0, 0) 100%), radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) var(--l1), #4d090c var(--l1), #4d090c var(--l2), rgba(0, 0, 0, 0) var(--l2), rgba(0, 0, 0, 0) 100%), conic-gradient(#c4181f 0%, #c4181f 7%, #E3191A 7%, #E3191A 24%, #C4181F 24%, #C4181F 37%, #9D1E23 37%, #9D1E23 72%, #C4181F 72%, #C4181F 88%, #E3191A 88%, #E3191A 96%, #C4181F 96%, #C4181F 100%) 50% 50%/54.2% 54.2% no-repeat, conic-gradient(#111111 0%, #111111 2%, transparent 2%, transparent 90%, #111111 90%, #111111 96%, transparent 96%, transparent 98%, #111111 98%, #111111 100%) 50% 50%/90% 90% no-repeat, radial-gradient(circle at 47% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 30%, black 30%, black 58%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0) 100%), radial-gradient(circle at 51% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 54%, #444545 54%, #444545 56%, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0) 100%), black;
+}
+.driver:before {
+    content: "";
+    position: absolute;
+    width: 26%;
+    height: 26%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 100%;
+    background: radial-gradient(circle at 70% 30%, #efbf5f 0%, #efbf5f 10%, #d8a640 30%, #d8a640 40%, #ca9721 60%, #7e5d15 90%);
+}
+
+.leftDriver {
+    left: 10px;
+}
+
+.rightDriver {
+    right: 10px;
+}
+
+.boombox.active .power {
+    background: linear-gradient(180deg, #E3191A 0%, #E3191A 2%, #C4181F 2%, #C4181F 85%, #891B20 85%, #891B20 100%);
+}
+.boombox.active .power:after {
+    display: block;
+    animation: noise-light 1.5s steps(6, end) infinite;
+}
+.boombox.active button:hover {
+    filter: brightness(110%);
+}
+.boombox.active .play {
+    filter: brightness(1);
+    cursor: pointer;
+}
+
+.boombox.playing .driver {
+    animation-name: speaker-on;
+    animation-duration: 500ms;
+    transform-origin: 50% 50%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.boombox.playing button.play {
+    filter: hue-rotate(310deg) brightness(60%) contrast(300%);
+}
+
+.rightDriver {
+    animation-delay: 0.01s;
+}
+
+.shoutout {
+    margin: 10px;
+    font-family: arial;
+    font-size: 12px;
+    color: #aaaaaa;
+}
+.shoutout a {
+    color: #cccccc;
+}
+
+@keyframes speaker-on {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.08);
+    }
+    50% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    80% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
+@keyframes noise-light {
+    0% {
+        opacity: 0.8;
+    }
+    20% {
+        opacity: 0.9;
+    }
+    40% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@font-face {
+    font-family: 'SignPainter';
+    src: url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.eot");
+    src: url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.eot?#iefix") format("embedded-opentype"), url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.woff2") format("woff2"), url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.woff") format("woff"), url("https://eko.com/s/sonorous/demos/SignPainter-HouseScript.ttf") format("truetype"), url("https://eko.com/s/sonorous/demos/signPainter-HouseScript.svg#SignPainter-HouseScript") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@media only screen and (max-width: 700px) {
+    body {
+        transform: scale(0.7);
+    }
+
+    .shoutout {
+        font-size: 22px;
+    }
+}
+@media only screen and (max-width: 599px) {
+    body {
+        transform: scale(0.5);
+    }
+
+    .shoutout {
+        font-size: 22px;
+    }
+}

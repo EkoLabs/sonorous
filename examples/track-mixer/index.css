@@ -1,10 +1,440 @@
-.time-handle {
-    background-color: blue;
-    width: 0px;
-    height: 3px;
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
-.time-scrubber {
-    border: 1px solid blue;
-    width: 300px;
-    height: 3px;
+
+body{
+    background : #606060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > svg{
+    display: none;
+}
+
+@font-face {
+    font-family: 'ChessType';
+    font-style: normal;
+    font-weight: normal;
+    src: local('ChessType'), url('https://eko.com/s/sonorous/demos/track_mixer/ChessType.woff') format('woff');
+}
+
+.controllerBox{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --main-color: #f6b018;
+    --secondary-color: #fff686;
+    display: flex;
+    flex-direction: column;
+}
+
+.controllerBox h3.title {
+    box-sizing: border-box;
+    font-size: 18px;
+    background: #161616;
+    border-radius: 5px 5px 0px 0px;
+    color: #8E8E8E;
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 9px;
+    text-transform: uppercase;
+    background-repeat: no-repeat;
+    background-position: right 10px top 10px;
+    background-size: 16px;
+}
+
+.controllerBox .box {
+    box-sizing: border-box;
+    flex-grow: 1;
+    padding: 18px 18px 10px 18px;
+    background : linear-gradient(90deg, rgba(43, 43, 43, 1) 0%, rgba(31, 31, 31, 1) 100%);
+    border-radius : 0 0 6px 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controllerBox .dotDisplay,
+.controllerBox .progressSlider,
+.controllerBox .buttonContainer,
+.controllerBox .toggle + label
+{
+    border-top: 3px solid #100e0f;
+    border-bottom: 2px solid #3b393a;
+    background: #100e0f;
+    padding: 6px 10px;
+    margin: 10px;
+    border-radius: 6px;
+}
+
+.controllerBox .dotDisplay{
+    position: relative;
+    font-family: ChessType;
+    color: var(--main-color);
+    text-transform: lowercase;
+    display: inline-block;
+}
+
+.songName{
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 300px;
+}
+
+.songName a{
+    display: block;
+    animation: scroll 10s steps(14, end) infinite;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all 0.3s linear;
+
+}
+
+.songName a:hover{
+    color: var(--secondary-color);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0%); }
+    50% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+.controllerBox .progressSlider{
+    display: flex;
+    padding: 4px 10px;
+    padding-bottom: 5px;
+    border-radius: 12px;
+    margin-top: 0;
+
+}
+
+.progressSlider span{
+    display: inline-block;
+    color: #7a7a7a;
+    font-size: 10px;
+    margin-top: 1px;
+}
+
+.progressSlider input[type=range] {
+    flex: 1;
+    margin: 0 10px;
+    border: 1px solid #565656;
+}
+
+.progressSlider input[type=range] {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 10px;
+    --progress-percent: 0%;
+
+    background-image: linear-gradient(90deg,
+    var(--main-color) var(--progress-percent),
+    black var(--progress-percent)
+    );
+
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.progressSlider input[type="range"]::-moz-range-track {
+    /*border: none;*/
+    background: none;
+    outline: none;
+}
+
+.progressSlider input[type=range]:focus {
+    outline: none;
+    /*border: none;*/
+}
+
+.progressSlider input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background-color: #df7164;
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    visibility: hidden;
+}
+
+.progressSlider .progressSlider input[type=range]::-moz-range-thumb {
+    -moz-appearance: none !important;
+    background-color: #df7164;
+    border: none;
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    visibility: hidden;
+}
+
+/*radial slider*/
+
+
+.radialSlider {
+    position: relative;
+    width: 100px;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.radialSlider svg{
+    pointer-events: none;
+}
+
+.radialSlider .jogContainer {
+    transform-origin: center;
+    cursor: pointer;
+    pointer-events: all;
+    touch-action: none;
+}
+
+.radialSlider input { display: none}
+
+.radialSlider label{
+    display: block;
+    color: #8E8E8E;
+    margin: 0;
+    padding: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.radialSlider svg {
+    margin-top: 8px;
+}
+
+.radialSlider .jog {
+    fill: url(#jogGradient);
+    stroke: #545454;
+    stroke-width: 1.3855;
+    stroke-miterlimit: 10;
+}
+
+.radialSlider .bar,  .radialSlider .barActive{
+    fill: none;
+    stroke: #FFA412;
+    stroke-width: 1.4431;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 191;
+}
+
+.radialSlider .bar{
+    stroke: #7A7A7A;
+}
+
+.radialSlider .thumb{
+    fill: #FFA412;
+}
+
+.radialSlider .dotDisplay {
+    align-self: center;
+    margin-top: 3px;
+    text-align: center;
+    width: 30px;
+}
+
+/*main button container*/
+
+.controllerBox .buttonContainer {
+    display: inline-flex;
+    padding: 0px 3px 3px 4px;
+    height: 36px;
+    margin: 0;
+}
+
+.buttonContainer button{
+    border: 0;
+    width: 36px;
+    height: 36px;
+    background : linear-gradient(180deg, rgba(35, 35, 35, 1) 0%, rgba(16, 14, 15, 1) 46.24%, rgba(18, 16, 17, 1) 71.46%, rgba(26, 25, 25, 1) 85.73%, rgba(39, 38, 39, 1) 97.23%, rgba(43, 43, 43, 1) 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.buttonContainer button:hover{
+    background: var(--secondary-color);
+}
+
+.buttonContainer button.active{
+    background: var(--main-color);
+}
+
+.buttonContainer button.active path, .buttonContainer button:hover path  {
+    stroke: none;
+    fill: black;
+}
+
+
+.buttonContainer button svg{
+    width: 60%;
+    height: 60%;
+}
+
+.buttonContainer button path{
+    fill:none;
+    stroke:#666666;
+    stroke-width:0.7003;
+    stroke-miterlimit:10;
+}
+
+button.loop svg {
+    width: 100%;
+    height: 100%;
+}
+
+button.fadeIn svg, button.fadeOut svg{
+    width: 90%;
+    height: 90%;
+}
+
+
+.controllerBox .toggle {
+    display: none;
+}
+
+.controllerBox .toggle {
+    display: none;
+}
+
+.row{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.row.a{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.toggleContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.toggleContainer .title{
+    color: #8E8E8E;
+    margin: 0;
+    padding: 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.controllerBox .toggle + label{
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 27px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 0;
+    margin-top: 8px;
+}
+
+.toggle + label:before{
+    position: absolute;
+    top: 0;
+    left: 3px;
+    content: "";
+    width: 57px;
+    height:  36px;
+    background : linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(16, 14, 15, 1) 46.24%, rgba(18, 16, 17, 1) 71.46%, rgba(26, 25, 25, 1) 85.73%, rgba(39, 38, 39, 1) 97.23%, rgba(43, 43, 43, 1) 100%);
+    border-radius : 50px;
+    transition: all 0.2s ease-out;
+}
+
+.toggle:checked + label:before{
+    left: 39px;
+    background: var(--main-color);
+}
+
+
+/*layout */
+
+.mixerContainer{
+    display: flex;
+    align-items: stretch;
+}
+
+.track {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.track .toggleContainer{
+    margin-top: 20px;
+}
+
+.track .buttonContainer {
+    margin-top: 20px;
+}
+
+#track-vocals > .title{
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/vocals.svg);
+}
+
+#track-guitars > .title{
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/guitars.svg);
+    background-size: 20px;
+}
+
+#track-cello > .title{
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/cello.svg);
+    background-size: 20px;
+}
+
+#track-keys > .title{
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/keys.svg);
+    background-size: 20px;
+}
+
+#track-drums > .title{
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/drums.svg);
+    background-size: 20px;
+}
+
+#master .box{
+    align-items: stretch;
+}
+
+.sonorousLink{
+    display: block;
+    width: 100px;
+    background-image: url(https://eko.com/s/sonorous/demos/track_mixer/sonorous.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    text-align: center;
+    text-decoration: none;
+    color: #626262;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-top: 48px;
+    align-self: center;
+}
+
+.shoutout{
+    color: #bbbbbb;
+    text-align: center;
+    font-size: 12px;
+    margin-top: auto;
+}
+
+.shoutout a{
+    color: #cccccc;
 }
