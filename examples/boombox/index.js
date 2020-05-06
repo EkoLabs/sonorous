@@ -1,5 +1,5 @@
 if (Sonorous && Sonorous.isSupported()) {
-    const sonor = window.Sonorous.addSonor('./assets/audio/sound1.mp3');
+    const sonor = window.Sonorous.addSonor('https://eko.com/s/sonorous/demos/boombox/Tillian_Frozen_Sun.mp3');
 
     const boombox = document.querySelector('.boombox');
     const playButton = document.querySelector('.play');
@@ -13,7 +13,6 @@ if (Sonorous && Sonorous.isSupported()) {
                 sonor.pause();
                 boombox.classList.remove("playing");
             } else {
-                console.log('ff');
                 sonor.play();
                 boombox.classList.add("playing");
             }
