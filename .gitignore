@@ -3,3 +3,4 @@ test-reports/
 src/Sonor/out/
 dist/
 .npmrc
+.idea
