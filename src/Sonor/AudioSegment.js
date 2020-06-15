@@ -727,14 +727,17 @@ class AudioSegment {
      * @memberof AudioSegment
      */
     clampVolume(vol) {
-        let minPossibleVolume = this._gainNode.gain.minValue;
-        let maxPossibleVolume = this._gainNode.gain.maxValue;
-        let clampedVol = clampWithWarning(
-            minPossibleVolume,
-            maxPossibleVolume,
-            vol,
-            'Volume value is out of bounds.'
-        );
+        let clampedVol = vol;
+        if (this._gainNode) {
+            let minPossibleVolume = this._gainNode.gain.minValue;
+            let maxPossibleVolume = this._gainNode.gain.maxValue;
+            clampedVol = clampWithWarning(
+                minPossibleVolume,
+                maxPossibleVolume,
+                vol,
+                'Volume value is out of bounds.'
+            );
+        }
         return clampedVol;
     }
 }
