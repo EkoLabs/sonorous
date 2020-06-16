@@ -245,4 +245,13 @@ export default class AudioContextManager {
     once(eventName, callback) {
         this._eventEmitter.once(eventName, callback);
     }
+
+    dispose() {
+        window.removeEventListener('visibilitychange', this.onDocumentVisibilityChange);
+        this._eventEmitter = null;
+        if (this._context.state !== 'closed') {
+            this.closeCurrentContext();
+            this._context = null;
+        }
+    }
 }

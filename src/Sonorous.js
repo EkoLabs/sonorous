@@ -14,6 +14,11 @@ class Sonorous {
         this._loaded = false;
         this.reload();
 
+        if (typeof window !== 'undefined' && window && typeof window.addEventListener === 'function') {
+            window.addEventListener('unload', this.dispose.bind(this));
+            window.addEventListener('pagehide', this.dispose.bind(this));
+        }
+
         // Generate the public facing API
         this.exportPublicAPI();
         return this.exports;
@@ -262,6 +267,15 @@ class Sonorous {
         copySetterGetterFromInstance(this, this.exports, 'muteAll');
         copySetterGetterFromInstance(this, this.exports, 'sonors', true);
         copySetterGetterFromInstance(this, this.exports, 'ctx', true);
+    }
+
+    dispose() {
+        this.unload();
+        this._contextManager.dispose();
+        if (typeof window !== 'undefined' && window && typeof window.removeEventListener === 'function') {
+            window.removeEventListener('unload', this.dispose);
+            window.removeEventListener('pagehide', this.dispose);
+        }
     }
 }
 
