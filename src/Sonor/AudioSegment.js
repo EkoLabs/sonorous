@@ -709,7 +709,7 @@ class AudioSegment {
     startFade(endVolume, duration) {
         let currentTime = this._context.currentTime;
         let endTime = currentTime + (duration);
-        this._gainNode.gain.linearRampToValueAtTime(endVolume, endTime);
+        this._gainNode.gain.exponentialRampToValueAtTime(endVolume, endTime);
         setTimeout(() => {
             this.trigger('fadefinished');
             this.volume = endVolume;
