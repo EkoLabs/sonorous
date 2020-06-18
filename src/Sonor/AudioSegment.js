@@ -707,6 +707,9 @@ class AudioSegment {
      * @memberof AudioSegment
      */
     startFade(endVolume, duration) {
+        if (endVolume === 0) {
+            endVolume += 0.01; // eslint-disable-line
+        }
         let currentTime = this._context.currentTime;
         let endTime = currentTime + (duration);
         this._gainNode.gain.exponentialRampToValueAtTime(endVolume, endTime);
