@@ -13,6 +13,10 @@
         <label id="master-volume-value">1.0</label>
     </div>
     <div>
+        <p>Mute all</p>
+        <button onclick = "muteAll()" id="mute-all-btn"> Mute All </button>
+    </div>
+    <div>
         <p>Sound 1</p>
         <button onclick = "playAudio(0)" id="play-btn-0"> Play </button>
         <button onclick = "pauseAudio(0)" id="pause-btn-0"> Pause </button>
@@ -42,7 +46,7 @@
                 <label id="looping-label-0">Not Looping</label>
             </div>
     </div>
-    <div>
+    <!-- <div>
             <p>Sound 2</p>
             <button onclick = "playAudio(1)" id="play-btn-1"> Play </button>
             <button onclick = "pauseAudio(1)" id="pause-btn-1"> Pause </button>
@@ -101,7 +105,7 @@
                         <button type="radio" onclick= "toggleLoop(2)">Loop</button>
                         <label id="looping-label-2">Not Looping</label>
                     </div>
-            </div>
+            </div> -->
     <!-- `/` is root of dist; we're being served as a static file in /test/integration/public -->
     <script src="/Sonorous.min.js" async></script>
     <script>
@@ -109,9 +113,7 @@
         let s = null;
         window.onload = function() {
             s = Sonorous;
-            s.addSonor('./test_audio/test_sound_1.mp3', {id: '0', preload: true, optimizeFor: 'time', poolSize: 4});
-            s.addSonor('./test_audio/test_sound_2.mp3', {id: '1', preload: false, optimizeFor: 'memory'});
-            s.addSonor('./test_audio/test_sound_2.mp3', {id: '2', preload: false, optimizeFor: 'memory'});
+            s.addSonor('./test_audio/test_sound_1.mp3', {id: '0', preload: true, optimizeFor: 'time'});
             for (id in s.sonors) {
                 var element = s.sonors[id];
                 element.on('play', function(snr) {
@@ -203,6 +205,9 @@
             s.get(id.toString()).looping = !s.get(id.toString()).looping;
             let label = document.getElementById(`looping-label-${id}`);
             label.innerHTML = s.get(id.toString()).looping ? "Looping" : "Not Looping";
+        }
+        muteAll = function() {
+            s.muteAll = !s.muteAll;
         }
     </script>
 </body>
