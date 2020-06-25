@@ -85,7 +85,7 @@ class Sonorous {
         this._masterMuted = newMuteValue;
         let volValue = newMuteValue ? 0.0 : this._masterVolume;
         this._eventEmitter.emit('mastervolumechanged', volValue);
-        this._masterGain.gain.value = volValue;
+        this._masterGain.gain.setValueAtTime(volValue, this._masterGain.context.currentTime);
     }
 
     /**

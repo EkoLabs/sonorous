@@ -13,6 +13,10 @@
         <label id="master-volume-value">1.0</label>
     </div>
     <div>
+        <p>Mute All</p>
+        <button onclick = "muteAll()" id="mute-all-btn"> Mute All </button>
+    </div>
+    <div>
         <p>Sound 1</p>
         <button onclick = "playAudio(0)" id="play-btn-0"> Play </button>
         <button onclick = "pauseAudio(0)" id="pause-btn-0"> Pause </button>
@@ -103,7 +107,7 @@
                     </div>
             </div>
     <!-- `/` is root of dist; we're being served as a static file in /test/integration/public -->
-    <script src="/Sonorous.min.js" async></script>
+    <script src="/Sonorous.js" async></script>
     <script>
         let sonors = [];
         let s = null;
@@ -203,6 +207,9 @@
             s.get(id.toString()).looping = !s.get(id.toString()).looping;
             let label = document.getElementById(`looping-label-${id}`);
             label.innerHTML = s.get(id.toString()).looping ? "Looping" : "Not Looping";
+        }
+        muteAll = function() {
+            s.muteAll = !s.muteAll;
         }
     </script>
 </body>
