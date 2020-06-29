@@ -698,6 +698,24 @@ class AudioSegment {
         return this._seekPosition;
     }
 
+    createLogarithmicBuffer(direction, scale, start, base, bufLen) {
+        let baseLog = base || 10;
+        let bufferLength = bufLen || 48000; // eslint-disable-line no-magic-numbers
+        var curve = new Float32Array(bufferLength);
+        var percent = 0;
+        var index;
+        var i;
+
+        for (i = 0; i < bufferLength; i++) {
+            // Index for the curve array.
+            // Direction positive for fade in, negative for fade out
+            index = direction > 0 ? i : bufferLength - 1 - i;
+            percent = i / bufferLength;
+            curve[index] = start + ((Math.log(1 + (baseLog * percent)) / Math.log(1 + baseLog)) * scale);
+        }
+
+        return curve;
+    }
 
     /**
      * Private function. This will kick off the fade immediately.
@@ -707,12 +725,14 @@ class AudioSegment {
      * @memberof AudioSegment
      */
     startFade(endVolume, duration) {
-        if (endVolume === 0) {
-            endVolume += 0.01; // eslint-disable-line
-        }
         let currentTime = this._context.currentTime;
-        let endTime = currentTime + (duration);
-        this._gainNode.gain.exponentialRampToValueAtTime(endVolume, endTime);
+        let deltaVolume = endVolume - this.volume;
+        let valueCurve = this.createLogarithmicBuffer(
+            deltaVolume,
+            Math.abs(deltaVolume),
+            deltaVolume < 0 ? endVolume : this.volume
+        );
+        this._gainNode.gain.setValueCurveAtTime(valueCurve, currentTime, duration);
         setTimeout(() => {
             this.trigger('fadefinished');
             this.volume = endVolume;
