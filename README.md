@@ -4,6 +4,8 @@
 # Sonorous
 Sonorous is a JavaScript audio library built for the modern browser, enabling easy audio integration into web apps and games. As an abstraction over the [WebAudio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), Sonorous offers fine-grained control for those who need it, while handling any cross-browser issues for you.
 
+by the team from [<img src="https://user-images.githubusercontent.com/3951311/86791993-b4c78200-c072-11ea-8936-14db378904a3.png" valign="bottom" width=200 alt="eko Engineering">](https://eko.engineering)
+
 # Table of Contents
 * [Examples](#examples)
 * [Getting Started](#getting-started)
@@ -20,11 +22,15 @@ Sonorous is a JavaScript audio library built for the modern browser, enabling ea
 
 [Boombox](https://codepen.io/OpherV/pen/xxwRMBw?editors=0100)
 
-![image](https://user-images.githubusercontent.com/3951311/81201022-71e32280-8fcd-11ea-9b9d-6adcf7fa6394.png)
+[<img src="https://user-images.githubusercontent.com/3951311/81201022-71e32280-8fcd-11ea-9b9d-6adcf7fa6394.png" width=400>](https://codepen.io/OpherV/pen/xxwRMBw?editors=0100)
 
 [Track Mixer](https://codepen.io/OpherV/pen/PoPQwaz?editors=0010)
 
-![image](https://user-images.githubusercontent.com/3951311/81200872-3ba5a300-8fcd-11ea-90cf-7de98cacfaf8.png)
+[<img src="https://user-images.githubusercontent.com/3951311/81200872-3ba5a300-8fcd-11ea-90cf-7de98cacfaf8.png" width=400>](https://codepen.io/OpherV/pen/PoPQwaz?editors=0010)
+
+[String Master](https://codepen.io/OpherV/pen/PoPQwaz?editors=0010)
+
+[<img src="https://user-images.githubusercontent.com/3951311/86790421-14249280-c071-11ea-91fd-1fe57bb357e7.png" width=400>](https://codepen.io/OpherV/pen/QWjQbmZ?editors=1100)
 
 See the repo's `examples/` directory for the source code.
 
