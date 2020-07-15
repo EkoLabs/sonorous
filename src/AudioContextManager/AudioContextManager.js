@@ -33,6 +33,7 @@ export default class AudioContextManager {
             // Add listeners for unlocking web audio playback
             document.addEventListener('touchend', this.unlockAudioContext.bind(this), true);
             document.addEventListener('click', this.unlockAudioContext.bind(this), true);
+            document.addEventListener('keydown', this.unlockAudioContext.bind(this), true);
 
             // Let's try unlocking without user gesture
             this.unlockAudioContext();
@@ -204,6 +205,7 @@ export default class AudioContextManager {
                 console.log('[ctor] Removing document listeners'); // eslint-disable-line no-console
                 document.removeEventListener('touchend', this.unlockAudioContext, true);
                 document.removeEventListener('click', this.unlockAudioContext, true);
+                document.removeEventListener('keydown', this.unlockAudioContext, true);
                 this._isUnlocked = true;
                 this._eventEmitter.emit('audiounlocked');
             }.bind(this));
