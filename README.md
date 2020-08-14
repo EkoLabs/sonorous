@@ -28,7 +28,7 @@ by the team from [<img src="https://user-images.githubusercontent.com/3951311/86
 
 [<img src="https://user-images.githubusercontent.com/3951311/81200872-3ba5a300-8fcd-11ea-90cf-7de98cacfaf8.png" width=400>](https://codepen.io/OpherV/pen/PoPQwaz?editors=0010)
 
-[String Master](https://codepen.io/OpherV/pen/PoPQwaz?editors=0010)
+[String Master](https://codepen.io/OpherV/pen/QWjQbmZ?editors=1100)
 
 [<img src="https://user-images.githubusercontent.com/3951311/86790421-14249280-c071-11ea-91fd-1fe57bb357e7.png" width=400>](https://codepen.io/OpherV/pen/QWjQbmZ?editors=1100)
 
