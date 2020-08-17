@@ -117,7 +117,9 @@ class AudioContext {
         return new AudioBufferSourceNode();
     }
     createGain() {
-        return new GainNode();
+        let gainNode = new GainNode();
+        gainNode.context = this;
+        return gainNode;
     }
     createGainNode() {
         return this.createGain();
@@ -136,4 +138,5 @@ class AudioContext {
         this.state = 'closed';
     }
 }
+
 window.AudioContext = AudioContext;
