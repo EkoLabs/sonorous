@@ -1,7 +1,7 @@
 
 [<img src="https://eko.engineering/static/media/sonorous_logo.83f6c44b.svg" alt="Sonorous" width="200"/>](https://eko.engineering/sonorous/)
 
-# [Sonorous](https://eko.engineering/sonorous/)
+# [Sonorous‎.js](https://eko.engineering/sonorous/)
 Sonorous is a JavaScript audio library built for the modern browser, enabling easy audio integration into web apps and games. As an abstraction over the [WebAudio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), Sonorous offers fine-grained control for those who need it, while handling any cross-browser issues for you.
 
 by the team from [<img src="https://user-images.githubusercontent.com/3951311/86791993-b4c78200-c072-11ea-8936-14db378904a3.png" valign="bottom" width=200 alt="eko Engineering">](https://eko.engineering)
