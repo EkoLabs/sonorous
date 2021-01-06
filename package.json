@@ -41,7 +41,7 @@
         "webpack-dev-server": "^3.1.14"
     },
     "dependencies": {
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "axios-retry": "^3.1.2",
         "eventemitter3": "^4.0.0",
         "ua-parser-js": "^0.7.19"
