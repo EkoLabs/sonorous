@@ -547,6 +547,7 @@ class AudioSegment {
     _fade(stopVolume, fadeDuration, startTime) {
         // If we're muted or not playing, then don't do anything
         if (this.muted || !this.isPlaying) {
+            console.warn('[AudioSegment] Attempting to fade a sonor that is muted or not playing'); // eslint-disable-line no-console
             return;
         }
         let clampedEndVolume = this.clampVolume(stopVolume);

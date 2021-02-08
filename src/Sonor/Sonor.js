@@ -284,8 +284,10 @@ class Sonor {
             this._activeSegments.forEach((segment) => {
                 this._playQueued = true;
                 this.loadSegment(segment).then(() => {
-                    segment.play();
-                    this._playQueued = false;
+                    if (this._state !== 'unloaded') {
+                        segment.play();
+                        this._playQueued = false;
+                    }
                 });
             });
         }
