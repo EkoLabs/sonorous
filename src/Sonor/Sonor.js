@@ -322,7 +322,6 @@ class Sonor {
         if (this._playQueued) {
             this.once('play', () => {
                 this._activeSegments.forEach((segment) => {
-                    segment.stop();
                     segment.once('stop', () => {
                         let index = this._activeSegments.indexOf(segment);
                         if (index >= 0) {
@@ -330,6 +329,7 @@ class Sonor {
                         }
                         this._segmentPool.returnSegment(segment);
                     });
+                    segment.stop();
                 });
                 this._activeSegments = [];
             });
