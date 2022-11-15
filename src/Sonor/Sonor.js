@@ -4,6 +4,7 @@ import copySetterGetterFromInstance from '../utils/copySetterGetterFromInstance'
 import DecodedBufferCache from './BufferCache/DecodedBufferCache';
 import validateSourcesHelper from '../utils/validateSourcesHelper';
 import EventEmitter from 'eventemitter3';
+import logger from '../utils/logger';
 const defaultPoolSize = 1;
 
 /**
@@ -190,7 +191,7 @@ class Sonor {
         if (this._activeSegments.length > 0) {
             return this._activeSegments[0].duration;
         }
-        console.warn('No active segment, duration cannot be determined.'); // eslint-disable-line no-console
+        logger.warn('No active segment, duration cannot be determined.');
         return 0;
     }
 
@@ -248,7 +249,7 @@ class Sonor {
         if (this._activeSegments.length > 0) {
             return this._activeSegments[0].getPlayheadPosition();
         }
-        console.warn('No active segments currently'); // eslint-disable-line no-console
+        logger.warn('No active segments currently');
         return 0;
     }
 
@@ -610,7 +611,7 @@ class Sonor {
                 }
             })
             .catch((e) => {
-                console.log(e); // eslint-disable-line no-console
+                logger.log(e);
                 this._state = 'unloaded';
                 this.trigger('error', e);
             });

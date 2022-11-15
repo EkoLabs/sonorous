@@ -3,14 +3,14 @@ import copySetterGetterFromInstance from '../utils/copySetterGetterFromInstance'
 import ActionQueue from '../utils/ActionQueue/ActionQueue';
 import EventEmitter from 'eventemitter3';
 import env from '../utils/environment';
+import logger from '../utils/logger';
 
 const clampWithWarning = function(min, max, value, warningMsg) {
     let clampedValue = value;
     if (value < min || value > max) {
         clampedValue = Math.max(min, Math.min(max, value));
         if (warningMsg) {
-            // eslint-disable-next-line no-console
-            console.warn(`${warningMsg} Allowed Range: [${min}, ${max}] Changing to:${clampedValue}`);
+            logger.warn(`${warningMsg} Allowed Range: [${min}, ${max}] Changing to:${clampedValue}`);
         }
     }
     return clampedValue;
@@ -480,7 +480,7 @@ class AudioSegment {
      */
     _stop() {
         if (!this._isPlaying) {
-            console.warn(`[AudioSegment] No playback to stop, as the segment is not currently playing. Resetting the segment.`); // eslint-disable-line
+            logger.warn(`[AudioSegment] No playback to stop, as the segment is not currently playing. Resetting the segment.`); // eslint-disable-line max-len
             // Don't trigger the stop notification, but reset the segment accordingly
             this._seekPosition = this._start;
             this.disposeBufferSourceNode();
@@ -488,7 +488,7 @@ class AudioSegment {
             return;
         }
         if (!this._sourceNode) {
-            console.warn(`[AudioSegment] Cannot stop playback, as there is no source node`); // eslint-disable-line
+            logger.warn(`[AudioSegment] Cannot stop playback, as there is no source node`);
             return; // Nothing to stop
         }
 
@@ -547,7 +547,7 @@ class AudioSegment {
     _fade(stopVolume, fadeDuration, startTime) {
         // If we're muted or not playing, then don't do anything
         if (this.muted || !this.isPlaying) {
-            console.warn('[AudioSegment] Attempting to fade a sonor that is muted or not playing'); // eslint-disable-line no-console
+            logger.warn('[AudioSegment] Attempting to fade a sonor that is muted or not playing');
             return;
         }
         let clampedEndVolume = this.clampVolume(stopVolume);
@@ -586,7 +586,7 @@ class AudioSegment {
             this._isPaused = false;
             this.trigger('play');
         } else {
-            console.warn('Unable to start playback. No source node created'); // eslint-disable-line no-console
+            logger.warn('Unable to start playback. No source node created');
         }
     }
 
@@ -651,11 +651,11 @@ class AudioSegment {
      */
     createSourceFromBuffer(buffer) {
         if (!buffer) {
-            console.log('Did not receive a buffer'); // eslint-disable-line no-console
+            logger.log('Did not receive a buffer');
             return;
         }
         if (!this._context) {
-            console.log('Do not have a context, cannot create an audio node'); // eslint-disable-line no-console
+            logger.log('Do not have a context, cannot create an audio node');
             return;
         }
         let source = this._context.createBufferSource();
@@ -691,7 +691,7 @@ class AudioSegment {
             // The code below divides the timeElapsed by the duration and mods by 1 - to get only the decimal part.
             // Then multiply that by the duration.
             if (this._duration === 0) {
-                console.warn(`[AudioSegment] A duration is not set for the current audio segment. Cannot calculate playback position.`); // eslint-disable-line
+                logger.warn(`[AudioSegment] A duration is not set for the current audio segment. Cannot calculate playback position.`); // eslint-disable-line max-len
                 return this._seekPosition;
             }
             return this.calculateLoopedPosition(timeElapsed);

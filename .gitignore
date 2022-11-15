@@ -4,3 +4,4 @@ src/Sonor/out/
 dist/
 .npmrc
 .idea
+.vscode

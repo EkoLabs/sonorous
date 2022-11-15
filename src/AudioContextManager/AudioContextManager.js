@@ -1,5 +1,6 @@
 import EventEmitter from 'eventemitter3';
 import env from '../utils/environment';
+import logger from '../utils/logger';
 
 /**
  * The AudioContextManager handles creating and unlocking the AudioContext.
@@ -60,7 +61,7 @@ export default class AudioContextManager {
             let currentTime = this._context.currentTime;
             setTimeout(() => {
                 if (currentTime === this._context.currentTime) {
-                    console.warn('Detected zombie AudioContext, explicitly suspending and resuming.'); // eslint-disable-line no-console
+                    logger.warn('Detected zombie AudioContext, explicitly suspending and resuming.');
                     this._context.suspend()
                         .then(() => this._context.resume());
                 }
@@ -89,17 +90,17 @@ export default class AudioContextManager {
             if (env.os === 'ios') { // eslint-disable-line no-magic-numbers
                 if (this._iOSContextReInitAttempts < this._maxIOSContextReInitAttempts) {
                     // eslint-disable-next-line max-len
-                    console.warn('[createAudioContext] Re-initializing audio context instance, identified null audio context'); // eslint-disable-line no-console
+                    logger.warn('[createAudioContext] Re-initializing audio context instance, identified null audio context');
                     this._iOSContextReInitAttempts++;
                     this.createAudioContext();
                     return;
                 }
 
                 // eslint-disable-next-line max-len
-                console.warn('[createAudioContext] Exhausted maximum iOS re-init attempts.'); // eslint-disable-line no-console
+                logger.warn('[createAudioContext] Exhausted maximum iOS re-init attempts.');
             } else {
                 this._isSupported = false;
-                console.error('[initAudioContext] Current browser does not support the WebAudio API.');
+                logger.error('[initAudioContext] Current browser does not support the WebAudio API.');
                 return;
             }
         }
@@ -122,14 +123,14 @@ export default class AudioContextManager {
                 if (retVal && typeof retVal.then === 'function') {
                     retVal
                         .then(() => {
-                            console.log('Context successfully closed'); // eslint-disable-line no-console
+                            logger.log('Context successfully closed');
                         })
                         .catch((e) => {
-                            console.warn(`Async error closing context: ${e}`); // eslint-disable-line no-console
+                            logger.warn(`Async error closing context: ${e}`);
                         });
                 }
             } catch (e) {
-                console.warn(`Error closing context: ${e}`); // eslint-disable-line no-console
+                logger.warn(`Error closing context: ${e}`);
             }
         }
     }
@@ -191,7 +192,7 @@ export default class AudioContextManager {
         // Play the empty buffer
         source.start(0);
 
-        console.log('[unlockAudioContext] Starting test to see if unlock was successful'); // eslint-disable-line no-console
+        logger.log('[unlockAudioContext] Starting test to see if unlock was successful');
 
         // Calling resume() on a stack initiated by user gesture is what actually unlocks the audio on Android Chrome >= 55.
         this._context.resume()
@@ -201,8 +202,8 @@ export default class AudioContextManager {
                     return;
                 }
 
-                console.log('[unlockAudioContext] Resolving unlockedDefer - unlock test was successful'); // eslint-disable-line no-console
-                console.log('[ctor] Removing document listeners'); // eslint-disable-line no-console
+                logger.log('[unlockAudioContext] Resolving unlockedDefer - unlock test was successful');
+                logger.log('[ctor] Removing document listeners');
                 document.removeEventListener('touchend', this.unlockAudioContext, true);
                 document.removeEventListener('click', this.unlockAudioContext, true);
                 document.removeEventListener('keydown', this.unlockAudioContext, true);
