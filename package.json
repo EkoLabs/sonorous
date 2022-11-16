@@ -1,6 +1,6 @@
 {
     "name": "sonorous",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "As an abstraction over the WebAudio APIs, Sonorous is an audio library that enables easy audio integration into web apps and games.",
     "main": "dist/Sonorous.min.js",
     "license": "Apache-2.0",
@@ -44,6 +44,7 @@
         "axios": "^0.21.1",
         "axios-retry": "^3.1.2",
         "eventemitter3": "^4.0.0",
+        "loglevel": "^1.8.1",
         "ua-parser-js": "^0.7.19"
     },
     "files": [

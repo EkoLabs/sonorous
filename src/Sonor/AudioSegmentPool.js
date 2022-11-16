@@ -1,5 +1,6 @@
 import AudioSegment from './AudioSegment';
 import copySetterGetterFromInstance from '../utils/copySetterGetterFromInstance';
+import logger from '../utils/logger';
 
 function generateRandomString() {
     return Math.random().toString(36); // eslint-disable-line no-magic-numbers
@@ -134,7 +135,7 @@ class AudioSegmentPool {
             this._inUseSegments.push(audioSegment);
             return audioSegment;
         }
-        console.warn('All segments are currently being used. Returning undefined.'); // eslint-disable-line no-console
+        logger.warn('All segments are currently being used. Returning undefined.');
         return undefined;
     }
 
@@ -152,10 +153,10 @@ class AudioSegmentPool {
             if (this._availableSegments.length < this._maxSize) {
                 this._availableSegments.push(audioSegment);
             } else {
-                console.warn('Unable to add audio segment to pool. Reached max capacity.'); // eslint-disable-line no-console
+                logger.warn('Unable to add audio segment to pool. Reached max capacity.');
             }
         } else {
-            console.warn('Unable to add audio segment to pool. Segment was not found in pool to begin with.'); // eslint-disable-line no-console
+            logger.warn('Unable to add audio segment to pool. Segment was not found in pool to begin with.');
         }
     }
 

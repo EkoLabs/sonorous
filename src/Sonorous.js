@@ -2,6 +2,7 @@ import AudioContextManager from './AudioContextManager/AudioContextManager';
 import Sonor from './Sonor/Sonor';
 import copySetterGetterFromInstance from './utils/copySetterGetterFromInstance';
 import EventEmitter from 'eventemitter3';
+import logger from './utils/logger';
 
 class Sonorous {
     /**
@@ -46,12 +47,12 @@ class Sonorous {
         if (typeof newMasterVolume !== 'number') {
             throw new TypeError('Invalid type given to volume setter - expected a number.');
         } else if (!this._loaded) {
-            console.warn('Sonorous has not been loaded yet. Please load before setting the volume.'); // eslint-disable-line no-console
+            logger.warn('Sonorous has not been loaded yet. Please load before setting the volume.');
             return;
         } else if (newMasterVolume < this._masterGain.gain.minValue ||
             newMasterVolume > this._masterGain.gain.maxValue) {
             // eslint-disable-next-line no-console
-            console.warn(`Value (${newMasterVolume}) is out of bounds. Clamping to range:
+            logger.warn(`Value (${newMasterVolume}) is out of bounds. Clamping to range:
             [${this._masterGain.gain.minValue}, ${this._masterGain.gain.maxValue}]`);
 
             newMasterVolume = Math.min(this._masterGain.gain.maxValue,
@@ -79,7 +80,7 @@ class Sonorous {
         if (typeof newMuteValue !== 'boolean') {
             throw new TypeError('Invalid type given to muted setter - expected a boolean.');
         } else if (!this._loaded) {
-            console.warn('Sonorous has not yet been loaded. Please load Sonorous before setting mute.'); // eslint-disable-line
+            logger.warn('Sonorous has not yet been loaded. Please load Sonorous before setting mute.'); // eslint-disable-line
             return;
         }
         this._masterMuted = newMuteValue;
@@ -116,7 +117,7 @@ class Sonorous {
      */
     addSonor(src, options) {
         if (!this._loaded) {
-            console.warn('Sonorous has not been loaded yet. Please load before adding sonors.'); // eslint-disable-line no-console
+            logger.warn('Sonorous has not been loaded yet. Please load before adding sonors.');
             return;
         }
 
@@ -139,7 +140,7 @@ class Sonorous {
             sonorToRemove.unload();
             delete this._sonors[id];
         } else {
-            console.warn('The ID passed in to removeSonor is not recognized. Nothing will happen.'); // eslint-disable-line no-console
+            logger.warn('The ID passed in to removeSonor is not recognized. Nothing will happen.');
         }
     }
 

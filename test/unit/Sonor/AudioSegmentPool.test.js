@@ -2,6 +2,7 @@
 import '../__mocks__/AudioContext.mock';
 import AudioSegmentPool from '../../../src/Sonor/AudioSegmentPool';
 import AudioContextManager from '../../../src/AudioContextManager/AudioContextManager';
+import logger from '../../../src/utils/logger';
 import Sonorous from '../../../src/Sonorous';
 
 describe('AudioSegmentPool', () => {
@@ -73,12 +74,15 @@ describe('AudioSegmentPool', () => {
     });
     describe('returning to pool', () => {
         let origConsoleWarn = console.warn;
+        let origLoggerWarn = logger.warn;
         let warnFn = jest.fn();
         beforeEach(() => {
+            logger.warn = warnFn;
             console.warn = warnFn;
         });
         afterEach(() => {
             console.warn = origConsoleWarn;
+            logger.warn = origLoggerWarn;
         });
         it('will add the audio segment back into the pool', () => {
             let ac = new AudioContext();
@@ -151,12 +155,15 @@ describe('AudioSegmentPool', () => {
 
         describe('decreasing pool size', () => {
             let origConsoleWarn = console.warn;
+            let origLoggerWarn = logger.warn;
             let warnFn = jest.fn();
             beforeEach(() => {
                 console.warn = warnFn;
+                logger.warn = warnFn;
             });
             afterEach(() => {
                 console.warn = origConsoleWarn;
+                logger.warn = origLoggerWarn;
             });
             it('will let you retrieve the max size of segments if you change pool size after init and there are no currently in use segments', () => {
                 let ac = new AudioContext();

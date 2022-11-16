@@ -1,3 +1,5 @@
+import logger from '../logger';
+
 /**
  * ActionQueue is a simple implementation of an action queue. It allows you to push actions
  * to the queue and once started, will execute them all synchronously. Any actions pushed
@@ -122,7 +124,7 @@ class ActionQueue {
 
     printLog() {
         this._debugLog.forEach(element => {
-            console.log(element);  // eslint-disable-line no-console
+            logger.log(element);
         });
     }
 }
